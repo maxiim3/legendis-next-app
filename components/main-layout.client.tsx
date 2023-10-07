@@ -14,7 +14,7 @@ export function MainLayoutClient({children}: ComponentPropsWithoutRef<'main'>) {
                'fixed bottom-0 left-0 z-50  w-screen bg-base-100/50 py-6 backdrop-blur-md',
 
                // Top Navigation
-               'md:top-0',
+               'md:top-0 md:h-min',
 
                // Side Navigation
                'border-amber-50/30 px-3 xl:h-screen xl:w-auto xl:border-r'
