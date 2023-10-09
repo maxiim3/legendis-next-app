@@ -2,13 +2,15 @@ import cn from '@/lib/utils';
 import {cva} from 'class-variance-authority';
 import {ComponentPropsWithoutRef} from 'react';
 
-export const globalHeadingStyles = cva(
-   'font-sans font-normal text-lg sm:text-xl uppercase md:text-2xl'
-);
+export const globalHeadingStyles = cva('font-sans font-normal text-base-content');
 export const Heading1 = ({children, id, className}: ComponentPropsWithoutRef<'h1'>) => (
    <h1
       id={id}
-      className={cn(globalHeadingStyles({className: 'lg:text-fluid-xl'}), className)}>
+      className={cn(
+         globalHeadingStyles(),
+         'text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl md:text-7xl',
+         className
+      )}>
       {children}
    </h1>
 );
@@ -32,7 +34,7 @@ export const Heading3 = ({children, id, className}: ComponentPropsWithoutRef<'h3
 export const Text = ({children, id, className}: ComponentPropsWithoutRef<'p'>) => (
    <p
       id={id}
-      className={cn('font-sans text-sm font-light sm:text-base', className)}>
+      className={cn('font-sans text-sm font-light text-base-content sm:text-base', className)}>
       {children}
    </p>
 );

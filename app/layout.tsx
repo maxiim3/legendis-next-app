@@ -13,8 +13,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
    return (
       <html
          lang='en'
-         data-theme={'customTheme'}>
-         <body className={cn('bg-black text-white', inter.className)}>
+         data-theme={'dark'}>
+         <body className={cn('bg-base-300 text-base-content', inter.className)}>
             <GlobalLayout>{children}</GlobalLayout>
          </body>
       </html>

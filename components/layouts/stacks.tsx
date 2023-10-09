@@ -12,24 +12,12 @@ export const flexStack = cva('flex w-[100%]', {
          true: 'flex-wrap',
          false: 'flex-nowrap',
       },
+      center: {
+         true: 'justify-center items-center',
+      },
    },
    defaultVariants: {
       direction: 'column',
       wrap: false,
    },
 });
-
-export const FlexStack = (
-   props: ComponentPropsWithoutRef<'div'> & {direction?: 'column' | 'row'; wrap?: boolean}
-) => (
-   <div
-      className={cn(
-         flexStack({
-            direction: props?.direction || 'column',
-            wrap: props?.wrap || false,
-         }),
-         props.className
-      )}
-      {...props}
-   />
-);

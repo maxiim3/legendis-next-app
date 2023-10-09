@@ -1,8 +1,5 @@
+import {Header} from '@/components/organisms/header';
 import {ReactNode} from 'react';
-
-function Header() {
-   return <header></header>;
-}
 
 function Footer() {
    return <footer></footer>;
