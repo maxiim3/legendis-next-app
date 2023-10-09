@@ -1,3 +1,4 @@
+import {GlobalLayout} from '@/components/ui/globalLayout';
 import {inter} from '@/lib/fonts';
 import cn from '@/lib/utils';
 import type {Metadata} from 'next';
@@ -13,7 +14,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <html
          lang='en'
          data-theme={'customTheme'}>
-         <body className={cn('', inter.className)}>{children}</body>
+         <body className={cn('bg-black text-white', inter.className)}>
+            <GlobalLayout>{children}</GlobalLayout>
+         </body>
       </html>
    );
 }
