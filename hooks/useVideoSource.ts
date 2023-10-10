@@ -1,5 +1,6 @@
 import {CloudinaryVideoPlayer} from 'next-cloudinary'
 import {MutableRefObject, useCallback} from 'react'
+import {useAppState} from '@/components/video-player';
 
 /**
  * Custom hook to determine the most appropriate video source based on network and screen size.
@@ -11,6 +12,7 @@ export function useVideoSource(
    source: VideoSource,
    videoRef: MutableRefObject<HTMLVideoElement | null>
 ) {
+
    // Screen size definitions
    const DEVICE: DeviceScreens = Object.freeze({
       SIZE_SMALL: 479,

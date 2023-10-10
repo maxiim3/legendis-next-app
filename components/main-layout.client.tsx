@@ -9,11 +9,7 @@ import React, {ComponentPropsWithoutRef, Suspense, useState} from 'react';
 export function MainLayoutClient({children}: ComponentPropsWithoutRef<'main'>) {
    return (
       <>
-         <div className='fixed left-0 -top-[300px] h-screen w-screen overflow-hidden'>
-            <Suspense>
-               <VideoPlayer />
-            </Suspense>
-         </div>
+
          <header
             className={cn(
                // Bottom Navigation

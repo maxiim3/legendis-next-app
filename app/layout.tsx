@@ -1,4 +1,3 @@
-import {MainLayoutClient} from '@/components/main-layout.client';
 import {italianno, roboto, tangerine} from '@/lib/fonts';
 import type {Metadata} from 'next';
 import './globals.css';
@@ -15,7 +14,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
          lang='en'>
          <body
             className={`relative ${roboto.className} ${italianno.className} ${tangerine.className}`}>
-            <MainLayoutClient>{children}</MainLayoutClient>
+            {/*<MainLayoutClient>*/}
+            {children}
+            {/*</MainLayoutClient>*/}
          </body>
       </html>
    );
