@@ -1,17 +1,23 @@
 'use client';
 
 import Legendis from '@/components/Legendis';
+import VideoPlayer from '@/components/video-player';
 import {useNavigationStore} from '@/lib/navigation.store';
 import {cn} from '@/lib/utils';
-import {ComponentPropsWithoutRef, useState} from 'react';
+import React, {ComponentPropsWithoutRef, Suspense, useState} from 'react';
 
 export function MainLayoutClient({children}: ComponentPropsWithoutRef<'main'>) {
    return (
       <>
+         <div className='fixed left-0 -top-[300px] h-screen w-screen overflow-hidden'>
+            <Suspense>
+               <VideoPlayer />
+            </Suspense>
+         </div>
          <header
             className={cn(
                // Bottom Navigation
-               'fixed bottom-0 left-0 z-50  w-screen bg-base-100/50 py-6 backdrop-blur-md',
+               'fixed bottom-0 left-0 z-50  w-screen bg-base-100/30 py-6 backdrop-blur-md',
 
                // Top Navigation
                'md:top-0 md:h-min',
@@ -24,7 +30,7 @@ export function MainLayoutClient({children}: ComponentPropsWithoutRef<'main'>) {
             <SideNavigation />
          </header>
          {children}
-         <footer className={'w-screen px-3 py-12 md:px-12 '}>
+         <footer className={'w-screen bg-base-100 px-3 py-12 md:px-12'}>
             <ul className={'flex w-full flex-wrap items-center justify-center gap-12'}>
                {Array.from({length: 6}).map((_, i) => (
                   <li
@@ -41,17 +47,37 @@ export function MainLayoutClient({children}: ComponentPropsWithoutRef<'main'>) {
 }
 
 const BottomNavigation = () => {
-   const [isOpen, setIsOpen] = useState(true);
+   const [isOpen, setIsOpen] = useState(false);
    const toggleIsOpen = () => setIsOpen(!isOpen);
 
    return (
-      <section className={cn('relatives flex w-full items-center justify-center gap-2 md:hidden', isOpen ?'h-full' :'h-12')}>
-         <nav className={cn('pb-16 transition duration-200 flex flex-col ', isOpen ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full')}>
+      <section
+         className={cn(
+            'relatives flex w-full items-center justify-center gap-2 md:hidden',
+            isOpen ? 'h-full' : 'h-12'
+         )}>
+         <nav
+            className={cn(
+               'flex flex-col pb-16 transition duration-200',
+               isOpen ? 'opacity-1 translate-y-0' : 'translate-y-full opacity-0'
+            )}>
             <NavigationItems />
          </nav>
-         <button className={'bottom-2 absolute'} onClick={toggleIsOpen}>
-            <Legendis className={'h-8 w-16 fill-primary'} />
-         </button>
+         <label className={'swap swap-flip absolute bottom-2 '}>
+            <input
+               onClick={toggleIsOpen}
+               type='checkbox'
+            />
+            <Legendis className={cn('h-8 w-16 fill-primary', 'swap-off')} />
+            <svg
+               className={cn('h-8 w-16 fill-primary', 'swap-on')}
+               width={64}
+               height={64}
+               viewBox='0 0 24 24'
+               xmlns='http://www.w3.org/2000/svg'>
+               <path d='M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z' />
+            </svg>
+         </label>
       </section>
    );
 };

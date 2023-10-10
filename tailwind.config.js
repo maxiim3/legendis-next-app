@@ -1,8 +1,7 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import twColors from 'tailwindcss/colors';
-import {colors as customColors} from './lib/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
+import { colors as customColors } from './lib/colors';
 /** @type {import('tailwindcss').Config} */
-
 
 module.exports = {
    content: [
@@ -116,10 +115,17 @@ module.exports = {
             },
          },
          fontFamily: {
-            cormorant: ['var(--font-cormorant)'],
-            manrope: ['var(--font-manrope)'],
-            poppins: ['var(--font-poppins)'],
             ...defaultTheme.fontFamily,
+            // serif: [
+            //    'var(--font-cormorant)',
+            //    'var(--font-italianno',
+            //    'var(--font-tangerine)',
+            //    'serif',
+            // ],
+            // cormorant: ['var(--font-cormorant)'],
+            // italianno: ['var(--font-italianno'],
+            // tangerine: ['var(--font-tangerine)'],
+            roboto: ['var(--font-roboto)'],
          },
       },
    },
@@ -129,7 +135,9 @@ module.exports = {
       require('@tailwindcss/typography'),
       require('daisyui'),
    ],
-
+   future: {
+      hoverOnlyWhenSupported: true,
+   },
    // daisyUI config (optional - here are the default values)
    daisyui: {
       themes: [

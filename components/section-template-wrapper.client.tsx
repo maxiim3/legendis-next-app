@@ -1,31 +1,45 @@
-'use client'
+'use client';
 
-import {ComponentPropsWithoutRef, useEffect, useRef} from 'react'
-import {useNavigationStore} from '@/lib/navigation.store'
-import {useInView} from 'framer-motion'
-import {cn} from '@/lib/utils'
-import SectionReferenceFactory from '@/lib/section-reference-factory.class'
+import {useNavigationStore} from '@/lib/navigation.store';
+import SectionReferenceFactory from '@/lib/section-reference-factory.class';
+import {cn} from '@/lib/utils';
+import {motion, useInView} from 'framer-motion';
+import {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
 
-export function SectionTemplateWrapper({className, id, children, slug}: ComponentPropsWithoutRef<'section'> & {
-   slug: SectionReferenceFactory['slug']
+export function SectionTemplateWrapper({
+   className,
+   id,
+   children,
+   slug,
+}: ComponentPropsWithoutRef<'section'> & {
+   slug: SectionReferenceFactory['slug'];
 }) {
-   const sectionRef = useRef<HTMLDivElement>(null)
+   const sectionRef = useRef<HTMLDivElement>(null);
 
-   const {setActiveSection, activeSection} = useNavigationStore(store => store)
+   const {setActiveSection, activeSection} = useNavigationStore(store => store);
+
    const inView = useInView(sectionRef, {
-      amount: 'all',
-      margin: '200px',
-   })
+      amount: 0.3, // 0  = 'some', 1 = 'all'
+      margin: '0px 0px 200px',
+   });
    useEffect(() => {
-      console.log(inView, activeSection, slug)
       if (inView) {
-         setActiveSection(slug)
+         setActiveSection(slug);
       }
-   }, [inView, setActiveSection, slug])
-
+   }, [inView, setActiveSection, slug, sectionRef]);
 
    return (
-      <section id={id}
-               className={cn(`w-full aspect-portrait bg-base-100/10 border border-primary backdrop-blur-sm pt-32`, className)}>{children}</section>
-   )
+      <motion.section
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         transition={{duration: 0.4, once: true, staggerChildren: 0.2}}
+         ref={sectionRef}
+         id={id}
+         className={cn(
+            `aspect-portrait w-[100vw] bg-base-100/10 pt-32 backdrop-blur-sm lg:w-[calc(100vw-400px)] xl:ml-24`,
+            className
+         )}>
+         {children}
+      </motion.section>
+   );
 }
