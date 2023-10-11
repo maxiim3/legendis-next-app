@@ -48,8 +48,8 @@ export default function HomeSections() {
                      className={
                         ' flex- prose flex-1 flex-col items-center justify-center text-center text-balance'
                      }>
-                     <Text className={'m-0 p-0 mb-4'}>Découvrez</Text>
-                     <h3 className={'m-0 p-0 uppercase text-3xl text-base-content'}>
+                     <Text className={'m-0 mb-4 p-0'}>Découvrez</Text>
+                     <h3 className={'m-0 p-0 text-3xl uppercase text-base-content'}>
                         Edith Piaf Symphonique
                      </h3>
                      <small>En partenariat avec Warner Music France</small>
@@ -63,7 +63,7 @@ export default function HomeSections() {
                         />
                      }>
                      <Tooltip
-                        className={'tooltip-top my-8 tooltip-primary mx-auto h-fit w-fit'}
+                        className={'tooltip-top tooltip-primary relative mx-auto my-8 h-fit w-fit'}
                         message={'Voir le making off sur Youtube'}>
                         <Link
                            className={'group mx-auto w-1/2 max-w-[488px]'}
@@ -71,6 +71,9 @@ export default function HomeSections() {
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
                            href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
+                           <div className='badge badge-primary absolute top-0 z-50 translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 group-hover:translate-y-4'>
+                              Nouvelle Sortie
+                           </div>
                            <Image
                               className={
                                  'mx-auto aspect-square w-full overflow-hidden rounded-xl object-cover  object-center transition group-hover:scale-105 group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)]'
@@ -84,14 +87,18 @@ export default function HomeSections() {
                      </Tooltip>
                   </Suspense>
                </article>
-               <a href={`#${presentation.id}`}>
+               <a
+                  className={
+                     'animate-bounce rounded-lg bg-base-100/10 transition hover:bg-base-100/60'
+                  }
+                  href={`#${presentation.id}`}>
                   <svg
                      xmlns='http://www.w3.org/2000/svg'
                      fill='none'
                      viewBox='0 0 24 24'
                      strokeWidth={1.5}
                      stroke='currentColor'
-                     className='h-12 w-12 animate-bounce stroke-base-content/60'>
+                     className='h-12 w-12 stroke-base-content/60'>
                      <path
                         strokeLinecap='round'
                         strokeLinejoin='round'
