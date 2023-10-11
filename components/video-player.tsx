@@ -1,7 +1,8 @@
 'use client';
 
+import Text from '@/components/atoms/text';
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource';
-import {motion} from 'framer-motion';
+import {motion, useScroll} from 'framer-motion';
 import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary';
 import React, {useEffect, useRef} from 'react';
 import {create} from 'zustand';
@@ -26,6 +27,8 @@ export default function VideoPlayer() {
    const {isVideoLoaded, setIsVideoLoaded, setComponentMounted, componentMounted} = useAppState(
       state => state
    );
+
+
    const BASE_URL = 'https://res.cloudinary.com';
    const CLOUDINARY_ENV = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
@@ -65,6 +68,7 @@ export default function VideoPlayer() {
       setVideoSource,
    ]);
 
+
    /*Handle Load Failed on no internet : Display an image placeholder instead of the video*/
    if (!componentMounted) {
       return (
@@ -72,10 +76,10 @@ export default function VideoPlayer() {
             className={
                'flex h-full w-full animate-pulse flex-col items-center justify-center bg-base-100/70'
             }>
-            <p className={'leading-wide text-xl uppercase text-primary'}>
+            <Text className={'space-x-3'}>
                <span className='loading loading-spinner loading-lg text-primary' />
                Legendis
-            </p>
+            </Text>
          </div>
       );
    }

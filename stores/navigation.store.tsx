@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import SectionReferenceFactory from '@/lib/section-reference-factory.class'
+import SectionReferenceFactory from '@/builders/section-reference.builder'
 
 export type SectionKeys = 'presentation' | 'team' | 'artists' | 'projects'
 export type NavigationStore = {

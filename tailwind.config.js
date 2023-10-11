@@ -1,6 +1,6 @@
 import twColors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
-import { colors as customColors } from './lib/colors';
+import { colors as customColors } from './styles/colors';
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {

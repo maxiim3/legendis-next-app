@@ -1,7 +1,7 @@
 'use client';
 
-import {useNavigationStore} from '@/lib/navigation.store';
-import SectionReferenceFactory from '@/lib/section-reference-factory.class';
+import {useNavigationStore} from '@/stores/navigation.store';
+import SectionReferenceFactory from '@/builders/section-reference.builder';
 import {cn} from '@/lib/utils';
 import {motion, useInView} from 'framer-motion';
 import {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
@@ -36,7 +36,7 @@ export function SectionTemplateWrapper({
          ref={sectionRef}
          id={id}
          className={cn(
-            `aspect-portrait w-[100vw] bg-base-100/10 pt-32 backdrop-blur-sm lg:w-[calc(100vw-400px)] xl:ml-24`,
+            `w-full bg-base-100/75 pt-32 backdrop-blur-sm drop-shadow-xl shadow-lg shadow-base-200/80 xl:w-[calc(100vw-200px)] ml-auto`,
             className
          )}>
          {children}
