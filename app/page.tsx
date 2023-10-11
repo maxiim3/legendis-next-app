@@ -1,20 +1,14 @@
 import HomeSections from '@/components/home-sections.client';
-import VideoPlayer from '@/components/video-player';
-import React, {Suspense} from 'react';
+import {HeaderBanner} from '@/components/video-player';
+import React from 'react';
 
 export default function LandingPage() {
    return (
       <main
          className={
-            'h-min-screen mx-auto  flex w-screen flex-col items-center justify-center bg-transparent font-roboto text-balance '
+            'h-min-screen relative mx-auto overflow-x-hidden flex w-screen flex-col items-center justify-center bg-transparent font-roboto text-balance '
          }>
-         <div className='relative  h-screen w-screen overflow-hidden'>
-            <Suspense>
-               <VideoPlayer />
-            </Suspense>
-         </div>
-
-         <h1 className={'sr-only text-xl font-light uppercase text-primary'}>Legendis</h1>
+         <HeaderBanner />
          <HomeSections />
       </main>
    );

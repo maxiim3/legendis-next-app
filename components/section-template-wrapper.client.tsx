@@ -36,7 +36,7 @@ export function SectionTemplateWrapper({
          ref={sectionRef}
          id={id}
          className={cn(
-            `w-full bg-base-100/75 pt-32 backdrop-blur-sm drop-shadow-xl shadow-lg shadow-base-200/80 xl:w-[calc(100vw-200px)] ml-auto`,
+            `w-full bg-base-100/75 py-24 backdrop-blur-sm drop-shadow-xl xl:w-[calc(100vw-200px)] ml-auto`,
             className
          )}>
          {children}

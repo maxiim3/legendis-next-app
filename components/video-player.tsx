@@ -2,9 +2,10 @@
 
 import Text from '@/components/atoms/text';
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource';
-import {motion, useScroll} from 'framer-motion';
+import {cn} from '@/lib/utils';
+import {motion, useScroll, useTransform} from 'framer-motion';
 import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary';
-import React, {useEffect, useRef} from 'react';
+import React, {Suspense, useEffect, useRef} from 'react';
 import {create} from 'zustand';
 
 export type AppState = {
@@ -23,11 +24,39 @@ export const useAppState = create<AppState>(set => ({
    setIsVideoLoaded: () => set({isVideoLoaded: true}),
 }));
 
+export function HeaderBanner() {
+   let {scrollYProgress} = useScroll();
+
+   let scale = useTransform(scrollYProgress, [0, 1], ['100%', '300%']);
+   let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '40%']);
+
+   console.log();
+   return (
+      <>
+         <motion.section
+            id={'hero'}
+            style={{
+               scale,
+               opacity,
+            }}
+            aria-label={'Video hero banner'}
+            className={cn(
+               'fixed top-0 mx-auto h-screen w-screen overflow-hidden'
+               // 'lg:aspect-video lg:h-auto '
+            )}>
+            {/* eslint-disable-next-line react/jsx-no-undef */}
+            <Suspense>
+               <VideoPlayer />
+            </Suspense>
+         </motion.section>
+      </>
+   );
+}
+
 export default function VideoPlayer() {
    const {isVideoLoaded, setIsVideoLoaded, setComponentMounted, componentMounted} = useAppState(
       state => state
    );
-
 
    const BASE_URL = 'https://res.cloudinary.com';
    const CLOUDINARY_ENV = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
@@ -68,7 +97,6 @@ export default function VideoPlayer() {
       setVideoSource,
    ]);
 
-
    /*Handle Load Failed on no internet : Display an image placeholder instead of the video*/
    if (!componentMounted) {
       return (
@@ -108,9 +136,10 @@ export default function VideoPlayer() {
             controls={false}
             videoRef={videoRef}
             src={VIDEO_SOURCE.VERY_HIGH}
-            className={
-               '![&_*]:p-0 ![&>[aria-label="Video_Player]:p-0 absolute top-0 m-0 mx-auto object-contain object-center p-0'
-            }
+            className={cn(
+               'absolute top-0 m-0 mx-auto object-contain object-center p-0',
+               problematicAddedElement && '![&_*]:p-0 ![&>[aria-label="Video_Player]:p-0 '
+            )}
          />
       </motion.div>
    );

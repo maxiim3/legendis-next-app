@@ -9,21 +9,29 @@ import MemberCard from '@/components/member-card';
 import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
 import SpotifyPlayer from '@/components/spotify-player';
 import {useNavigationStore} from '@/stores/navigation.store';
+import {motion, useScroll, useTransform} from 'framer-motion';
 import React from 'react';
 
 export default function HomeSections() {
    const {artists, presentation, team, projects} = useNavigationStore(store => store.sections);
 
+   let {scrollYProgress} = useScroll();
+
+   let scale = useTransform(scrollYProgress, [0, 1], ['100%', '200%']);
+   let y = useTransform(scrollYProgress, [0, 1], ['0', '10%']);
+   let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
    return (
       <>
-         <div
+         <motion.div
+            style={{scale, y, opacity}}
             className={
-               'absolute top-0 flex h-screen w-screen flex-col items-center justify-center'
+               'relative top-0 flex h-screen w-screen flex-col items-center justify-center'
             }>
             <Prose
                className={
-                  'relative flex max-h-144 w-screen flex-col items-center justify-center gap-2 rounded-2xl bg-base-100/80 py-8'
+                  'relative flex aspect-portrait max-h-144 w-screen flex-col items-center justify-center gap-2 rounded-2xl bg-base-100/30 py-8 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur'
                }>
+               <h1 className={'sr-only text-xl font-light uppercase text-primary'}>Legendis</h1>
                <Legendis className={'h-24 w-48 fill-primary'} />
                <Heading2 className={'mb-0 text-4xl text-base-content'}>Legendis</Heading2>
                <small className={'text-primary/80'}>Un label Jamais 203 Productions</small>
@@ -45,13 +53,13 @@ export default function HomeSections() {
                   </svg>
                </a>
             </Prose>
-         </div>
+         </motion.div>
          {/*<StarsBackground />*/}
          <SectionTemplateWrapper
             slug={presentation.slug}
-            className={'mt-4 h-144 p-2 px-1 sm:p-4 sm:px-3 md:p-8'}
+            className={'mt-4 h-144 p-2 px-1  sm:px-3 '}
             id={presentation.id}>
-            <Prose className={'mx-auto pb-8 pt-24 text-center'}>
+            <Prose className={'mx-auto pb-8 pt-48 text-center'}>
                {/*<Heading2>Bienvenus...</Heading2>*/}
                <Text>
                   Bienvenus dans le monde de Legendis, un label musical dédié à la musique
@@ -94,7 +102,6 @@ export default function HomeSections() {
          </SectionTemplateWrapper>
          <SectionTemplateWrapper
             slug={team.slug}
-            className={'p-2 sm:p-4 md:p-8'}
             id={team.id}>
             <Prose className={'mx-auto text-center'}>
                <Heading2>Les membres</Heading2>
@@ -107,7 +114,7 @@ export default function HomeSections() {
             </div>
          </SectionTemplateWrapper>
          <SectionTemplateWrapper
-            className={'w-full p-2 sm:p-4 md:p-8 '}
+            className={'w-full px-2 sm:px-4 md:px-8 '}
             slug={artists.slug}
             id={artists.id}>
             <Prose className={'mx-auto text-center'}>
