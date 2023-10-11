@@ -58,11 +58,14 @@ const membersCollection = {
       },
    },
 };
+
+const useLangParams = (lang: 'fr' | 'en') => {
+   return lang;
+};
 export default function SectionFounders({className}: ComponentPropsWithoutRef<'section'>) {
    const tabs: TabType = membersCollection;
    const {activeTab, setActiveTab} = useTabs(tabs);
-   let lang: 'fr' | 'en';
-   lang = 'fr';
+   let lang = useLangParams('fr');
 
    type ImageComponentProps = {
       li?: ComponentPropsWithoutRef<'li'>;
