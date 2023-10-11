@@ -5,12 +5,15 @@ import Legendis from '@/components/Legendis';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';
+import Tooltip from '@/components/atoms/tooltip';
 import MemberCard from '@/components/member-card';
 import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
 import SpotifyPlayer from '@/components/spotify-player';
 import {useNavigationStore} from '@/stores/navigation.store';
 import {motion, useScroll, useTransform} from 'framer-motion';
-import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, {Suspense} from 'react';
 
 export default function HomeSections() {
    const {artists, presentation, team, projects} = useNavigationStore(store => store.sections);
@@ -22,22 +25,66 @@ export default function HomeSections() {
    let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
    return (
       <>
-         <motion.div
+         <motion.section
             style={{scale, y, opacity}}
             className={
                'relative top-0 flex h-screen w-screen flex-col items-center justify-center'
             }>
             <Prose
                className={
-                  'relative flex aspect-portrait max-h-144 w-screen flex-col items-center justify-center gap-2 rounded-2xl bg-base-100/30 py-8 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur'
+                  '  relative flex  w-screen flex-col items-center justify-center gap-2 rounded-2xl border border-primary/40 bg-base-100/30 py-8 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur'
                }>
-               <h1 className={'sr-only text-xl font-light uppercase text-primary'}>Legendis</h1>
-               <Legendis className={'h-24 w-48 fill-primary'} />
-               <Heading2 className={'mb-0 text-4xl text-base-content'}>Legendis</Heading2>
-               <small className={'text-primary/80'}>Un label Jamais 203 Productions</small>
-               <a
-                  className={'mt-20'}
-                  href={`#${presentation.id}`}>
+               <Prose>
+                  <h1 className={'sr-only text-xl font-light uppercase text-primary'}>Legendis</h1>
+                  <Legendis className={'h-24 w-48 fill-primary'} />
+                  <Heading2 className={'mb-0 text-4xl text-base-content'}>Legendis</Heading2>
+                  <small className={'text-primary/80'}>Un label Jamais 203 Productions</small>
+               </Prose>
+               <article
+                  className={
+                     'flex w-full flex-col gap-1 border-t border-base-300/40 pt-12  md:justify-around'
+                  }>
+                  <Prose
+                     className={
+                        ' flex- prose flex-1 flex-col items-center justify-center text-center text-balance'
+                     }>
+                     <Text className={'m-0 p-0 mb-4'}>Découvrez</Text>
+                     <h3 className={'m-0 p-0 uppercase text-3xl text-base-content'}>
+                        Edith Piaf Symphonique
+                     </h3>
+                     <small>En partenariat avec Warner Music France</small>
+                  </Prose>
+                  <Suspense
+                     fallback={
+                        <div
+                           className={
+                              'mx-auto my-8 aspect-square h-full w-48 animate-pulse overflow-hidden rounded-xl bg-base-300/70'
+                           }
+                        />
+                     }>
+                     <Tooltip
+                        className={'tooltip-top my-8 tooltip-primary mx-auto h-fit w-fit'}
+                        message={'Voir le making off sur Youtube'}>
+                        <Link
+                           className={'group mx-auto w-1/2 max-w-[488px]'}
+                           target={'_blank'}
+                           referrerPolicy={'no-referrer'}
+                           title={'Voir le Making off sur youtube'}
+                           href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
+                           <Image
+                              className={
+                                 'mx-auto aspect-square w-full overflow-hidden rounded-xl object-cover  object-center transition group-hover:scale-105 group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)]'
+                              }
+                              alt={'Edith Piaf Symphonique'}
+                              src={'/assets/piaf.jpg'}
+                              width={200}
+                              height={200}
+                           />
+                        </Link>
+                     </Tooltip>
+                  </Suspense>
+               </article>
+               <a href={`#${presentation.id}`}>
                   <svg
                      xmlns='http://www.w3.org/2000/svg'
                      fill='none'
@@ -53,7 +100,7 @@ export default function HomeSections() {
                   </svg>
                </a>
             </Prose>
-         </motion.div>
+         </motion.section>
          {/*<StarsBackground />*/}
          <SectionTemplateWrapper
             slug={presentation.slug}

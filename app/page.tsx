@@ -1,6 +1,6 @@
-import HomeSections from '@/components/home-sections.client';
 import {HeaderBanner} from '@/components/video-player';
 import React from 'react';
+import HomeSections from '@/components/home-sections.client';
 
 export default function LandingPage() {
    return (
