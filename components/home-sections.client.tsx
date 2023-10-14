@@ -5,7 +5,6 @@ import Legendis from '@/components/Legendis';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';
-import Tooltip from '@/components/atoms/tooltip';
 import MemberCard from '@/components/member-card';
 import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
 import SpotifyPlayer from '@/components/spotify-player';
@@ -26,23 +25,29 @@ export default function HomeSections() {
    return (
       <>
          <motion.section
-            style={{scale, y, opacity}}
+            // style={{scale, y, opacity}}
             className={
                'relative top-0 flex h-screen w-screen flex-col items-center justify-center'
             }>
-            <Prose
+            <div
                className={
-                  '  relative flex  w-screen flex-col items-center justify-center gap-2 rounded-2xl border border-primary/40 bg-base-100/30 py-8 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur'
+                  '  relative flex w-screen max-w-[800px] md:h-auto h-full flex-col items-center  justify-center border-primary/40 bg-base-100/30 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur md:mx-3 md:w-3/4 md:gap-2 md:rounded-2xl md:border md:py-8 lg:w-full'
                }>
                <Prose>
-                  <h1 className={'sr-only text-xl font-light uppercase text-primary'}>Legendis</h1>
-                  <Legendis className={'h-24 w-48 fill-primary'} />
-                  <Heading2 className={'mb-0 text-4xl text-base-content'}>Legendis</Heading2>
-                  <small className={'text-primary/80'}>Un label Jamais 203 Productions</small>
+                  <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}>
+                     Legendis
+                  </h1>
+                  <Legendis className={'mx-auto h-16 w-24 fill-primary md:h-24 md:w-48'} />
+                  <Heading2 className={'my-1 text-center text-4xl text-base-content md:mb-0'}>
+                     Legendis
+                  </Heading2>
+                  <small className={'text-center text-primary/80'}>
+                     Un label Jamais 203 Productions
+                  </small>
                </Prose>
                <article
                   className={
-                     'flex w-full flex-col gap-1 border-t border-base-300/40 pt-12  md:justify-around'
+                     'flex w-full flex-col gap-1 border-t border-base-300/40 md:justify-around  md:pt-12'
                   }>
                   <Prose
                      className={
@@ -62,53 +67,107 @@ export default function HomeSections() {
                            }
                         />
                      }>
-                     <Tooltip
-                        className={'tooltip-top tooltip-primary relative mx-auto my-8 h-fit w-fit'}
-                        message={'Voir le making off sur Youtube'}>
+                     {/*<Tooltip*/}
+                     {/*   className={'tooltip-top tooltip-primary relative mx-auto my-8 h-fit w-fit'}*/}
+                     {/*   message={'Voir le making off sur Youtube'}>*/}
+                     <div className={'group relative mx-auto my-8 h-fit w-fit'}>
+                        <div className='badge badge-primary absolute right-2 top-0 z-50 hidden translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:translate-y-4 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 md:flex'>
+                           Nouvelle Sortie
+                        </div>
+                        <Image
+                           className={
+                              'mx-auto aspect-square min-w-[160px] w-[45vw] md:max-w-[600px] max-w-[240px] overflow-hidden rounded-xl object-cover object-center transition md:group-hover:grayscale md:w-full md:group-hover:scale-105 md:group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)] md:group-hover:blur-[1px]'
+                           }
+                           alt={'Edith Piaf Symphonique'}
+                           src={'/assets/piaf.jpg'}
+                           width={200}
+                           height={200}
+                        />
+                        <div
+                           className={
+                              'aspect-squares absolute left-0 top-0 mb-12 hidden h-3/4 w-full flex-col items-center justify-end gap-3 transition duration-100 md:group-hover:flex'
+                           }>
+                           <Link
+                              className={
+                                 'btn-base-100 hover-scale-105 btn btn-outline w-3/4 border-base-100/40 bg-base-100/80 opacity-90 hover:opacity-100'
+                              }
+                              target={'_blank'}
+                              referrerPolicy={'no-referrer'}
+                              title={'Voir le Making off sur youtube'}
+                              href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
+                              Making Off
+                           </Link>
+                           <Link
+                              className={
+                                 'hover-scale-105 btn btn-outline w-3/4 border-primary/40 bg-primary/60 opacity-90 drop-shadow-xl backdrop-blur-2xl hover:opacity-100'
+                              }
+                              target={'_blank'}
+                              referrerPolicy={'no-referrer'}
+                              title={'Voir le Making off sur youtube'}
+                              href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
+                              Album
+                           </Link>
+                        </div>
+                     </div>
+                     <div
+                        className={
+                           'aspect-squares  mb-12 md:hidden h-3/4 w-full flex-col items-center justify-end gap-3 transition duration-100 flex'
+                        }>
                         <Link
-                           className={'group mx-auto w-1/2 max-w-[488px]'}
+                           className={
+                              'btn-base-100 hover-scale-105 btn btn-outline w-3/4 border-base-100/40 bg-base-100/80 opacity-90 hover:opacity-100'
+                           }
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
                            href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
-                           <div className='badge badge-primary absolute top-0 z-50 translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 group-hover:translate-y-4'>
-                              Nouvelle Sortie
-                           </div>
-                           <Image
-                              className={
-                                 'mx-auto aspect-square w-full overflow-hidden rounded-xl object-cover  object-center transition group-hover:scale-105 group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)]'
-                              }
-                              alt={'Edith Piaf Symphonique'}
-                              src={'/assets/piaf.jpg'}
-                              width={200}
-                              height={200}
-                           />
+                          Voir le making off
                         </Link>
-                     </Tooltip>
+                        <Link
+                           className={
+                              'hover-scale-105 btn btn-outline w-3/4 border-primary/40 bg-primary/60 opacity-90 drop-shadow-xl backdrop-blur-2xl hover:opacity-100'
+                           }
+                           target={'_blank'}
+                           referrerPolicy={'no-referrer'}
+                           title={'Écouter sur Spotify'}
+                           href={'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'}>
+                           Écouter l&apos;album
+                        </Link>
+                     </div>
+                     {/*</Tooltip>*/}
                   </Suspense>
                </article>
-               <a
-                  className={
-                     'animate-bounce rounded-lg bg-base-100/10 transition hover:bg-base-100/60'
-                  }
-                  href={`#${presentation.id}`}>
-                  <svg
-                     xmlns='http://www.w3.org/2000/svg'
-                     fill='none'
-                     viewBox='0 0 24 24'
-                     strokeWidth={1.5}
-                     stroke='currentColor'
-                     className='h-12 w-12 stroke-base-content/60'>
-                     <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M19.5 8.25l-7.5 7.5-7.5-7.5'
-                     />
-                  </svg>
-               </a>
-            </Prose>
+               {/*<a*/}
+               {/*   className={*/}
+               {/*      'animate-bounce rounded-lg bg-base-100/10 transition hover:bg-base-100/60'*/}
+               {/*   }*/}
+               {/*   href={`#${presentation.id}`}>*/}
+               {/*   <svg*/}
+               {/*      xmlns='http://www.w3.org/2000/svg'*/}
+               {/*      fill='none'*/}
+               {/*      viewBox='0 0 24 24'*/}
+               {/*      strokeWidth={1.5}*/}
+               {/*      stroke='currentColor'*/}
+               {/*      className='h-12 w-12 stroke-base-content/60'>*/}
+               {/*      <path*/}
+               {/*         strokeLinecap='round'*/}
+               {/*         strokeLinejoin='round'*/}
+               {/*         d='M19.5 8.25l-7.5 7.5-7.5-7.5'*/}
+               {/*      />*/}
+               {/*   </svg>*/}
+               {/*</a>*/}
+            </div>
          </motion.section>
          {/*<StarsBackground />*/}
+      </>
+   );
+}
+
+function SecondWindow() {
+   const {artists, presentation, team, projects} = useNavigationStore(store => store.sections);
+
+   return (
+      <>
          <SectionTemplateWrapper
             slug={presentation.slug}
             className={'mt-4 h-144 p-2 px-1  sm:px-3 '}
