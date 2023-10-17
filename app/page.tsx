@@ -11,11 +11,11 @@ export default function HomePage() {
          className={
             'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden bg-transparent font-roboto text-balance '
          }>
-         <VideoHero />
+         {/*<VideoHero />*/}
          <HeroBanner />
          <Presentation />
-         <Members />
-         <SpotifyGrid />
+         {/*<Members />*/}
+         {/*<SpotifyGrid />*/}
       </main>
    );
 }
