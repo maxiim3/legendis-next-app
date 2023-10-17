@@ -24,7 +24,7 @@ export const useAppState = create<AppState>(set => ({
    setIsVideoLoaded: () => set({isVideoLoaded: true}),
 }));
 
-export function HeaderBanner() {
+export function VideoHero() {
    let {scrollYProgress} = useScroll();
 
    let scale = useTransform(scrollYProgress, [0, 1], ['100%', '300%']);

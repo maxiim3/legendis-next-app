@@ -2,10 +2,10 @@
 
 import LegendisWIthAnimatedText from '@/components/legendis-with-animated-text.client';
 import LogoMotion from '@/components/logo-motion.client';
-import {useAppState} from '@/components/video-player';
 import {cn} from '@/lib/utils';
 import {motion} from 'framer-motion';
 import React from 'react';
+import {useAppState} from '@/components/organisms/video-hero.client';
 
 export function Hero() {
    const {isVideoLoaded, componentMounted} = useAppState(state => state);
