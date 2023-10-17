@@ -4,8 +4,8 @@ import Artists from '@/collections/artists-collection';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';
-import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
-import SpotifyPlayer from '@/components/spotify-player';
+import {SectionTemplateWrapper} from '@/components/layouts/section-template-wrapper.client';
+import SpotifyPlayer from '@/components/molecules/spotify-player';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React from 'react';
 

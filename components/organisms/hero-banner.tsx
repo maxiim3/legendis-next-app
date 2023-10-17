@@ -1,4 +1,4 @@
-import Legendis from '@/components/Legendis';
+import Legendis from '@/components/atoms/Legendis';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';

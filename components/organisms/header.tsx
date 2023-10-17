@@ -1,20 +1,17 @@
 'use client';
 
-import Legendis from '@/components/Legendis';
+import Legendis from '@/components/atoms/Legendis';
+import {Label} from '@/components/ui/label';
+import {Separator} from '@/components/ui/separator';
+import {Switch} from '@/components/ui/switch';
 import {cn} from '@/lib/utils';
+import {OZ_AvailableLanguages, useI18n} from '@/stores/i18n.store';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React from 'react';
-import {create} from 'zustand';
 
-const useNavigationContext = create<{isOpen: boolean; setIsOpen: (value: boolean) => void}>(
-   set => ({
-      isOpen: false,
-      setIsOpen: (value: boolean) => set({isOpen: value}),
-   })
-);
 export default function Header() {
    const {sections, setActiveSection, activeSection} = useNavigationStore(store => store);
-   null;
+
    return (
       <header
          className={cn(
@@ -37,13 +34,13 @@ export default function Header() {
                <Hamburger />
             </label>
          </div>
-         <aside className='drawer-side'>
+         <aside tabIndex={0} className='drawer-side'>
             <label
                htmlFor='my-drawer'
                aria-label='close sidebar'
                className='drawer-overlay'
             />
-            <nav className='menu flex h-full w-80 flex-col items-center gap-[20vh] bg-base-200 py-4 text-base-content'>
+            <nav className='menu flex h-full w-80 flex-col items-center justify-between bg-base-200 py-4 text-base-content'>
                <header className={'flex w-[100%] flex-row items-center justify-between'}>
                   <Legendis className={cn('h-8 w-16 fill-primary')} />
                   <label
@@ -61,6 +58,7 @@ export default function Header() {
                      </svg>
                   </label>
                </header>
+               <Separator className={'opacity-50'} />
                <ul className={'flex w-full flex-col gap-2'}>
                   {Object.values(sections).map(section => (
                      <a
@@ -69,7 +67,7 @@ export default function Header() {
                         }}
                         key={`nav-item-${section.slug}`}
                         className={cn(
-                           'btn rounded bg-base-200 px-4 py-2 text-primary',
+                           'btn btn-outline rounded border-base-300 bg-base-200 px-4 py-2 text-primary hover:border-none hover:bg-base-300 hover:text-primary',
                            activeSection === section.slug && 'bg-primary text-primary-content'
                         )}
                         href={`#${section.id}`}>
@@ -77,6 +75,8 @@ export default function Header() {
                      </a>
                   ))}
                </ul>
+               <Separator className={'opacity-50'} />
+               <SwitchLanguage />
             </nav>
          </aside>
       </header>
@@ -98,6 +98,31 @@ export default function Header() {
       //    <DesktopNavigation />
       //    <LargeScreenNavigation />
       // </header>
+   );
+}
+
+function SwitchLanguage() {
+   const {toggleLanguage, currentLanguage} = useI18n(store => store);
+
+   return (
+      <div
+         className='flex items-center space-x-2'
+         data-language={currentLanguage}>
+         <Label
+            className={'uppercase'}
+            htmlFor='language'>
+            {OZ_AvailableLanguages.Values.fr}
+         </Label>
+         <Switch
+            onClick={toggleLanguage}
+            id='language'
+         />
+         <Label
+            className={'uppercase'}
+            htmlFor='language'>
+            {OZ_AvailableLanguages.Values.en}
+         </Label>
+      </div>
    );
 }
 

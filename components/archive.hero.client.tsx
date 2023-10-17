@@ -1,7 +1,7 @@
 'use client';
 
-import LegendisWIthAnimatedText from '@/components/legendis-with-animated-text.client';
-import LogoMotion from '@/components/logo-motion.client';
+import LegendisWIthAnimatedText from '@/components/molecules/legendis-with-animated-text.client';
+import LogoMotion from '@/components/atoms/logo-motion.client';
 import {cn} from '@/lib/utils';
 import {motion} from 'framer-motion';
 import React from 'react';

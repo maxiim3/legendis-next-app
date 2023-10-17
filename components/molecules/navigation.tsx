@@ -1,6 +1,6 @@
 'use client';
 
-import Legendis from '@/components/Legendis';
+import Legendis from '@/components/atoms/Legendis';
 import {cn} from '@/lib/utils';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React, {ComponentPropsWithoutRef} from 'react';

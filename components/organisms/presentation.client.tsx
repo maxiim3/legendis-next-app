@@ -3,7 +3,7 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from '@/components/ui/accordion';
 import Prose from '@/components/atoms/Prose';
 import Text from '@/components/atoms/text';
-import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
+import {SectionTemplateWrapper} from '@/components/layouts/section-template-wrapper.client';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React, {ComponentPropsWithoutRef} from 'react';
 

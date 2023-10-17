@@ -3,8 +3,8 @@
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';
-import MemberCard from '@/components/member-card';
-import {SectionTemplateWrapper} from '@/components/section-template-wrapper.client';
+import MemberCard from '@/components/organisms/member-card';
+import {SectionTemplateWrapper} from '@/components/layouts/section-template-wrapper.client';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React from 'react';
 
