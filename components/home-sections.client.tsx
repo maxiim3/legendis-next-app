@@ -19,7 +19,7 @@ export default function HomeSections() {
 
    let {scrollYProgress} = useScroll();
 
-   let scale = useTransform(scrollYProgress, [0, 1], ['100%', '200%']);
+    let scale = useTransform(scrollYProgress, [0, 1], ['100%', '200%']);
    let y = useTransform(scrollYProgress, [0, 1], ['0', '10%']);
    let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
    return (
@@ -31,7 +31,7 @@ export default function HomeSections() {
             }>
             <div
                className={
-                  '  relative flex w-screen max-w-[800px] md:h-auto h-full flex-col items-center  justify-center border-primary/40 bg-base-100/30 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur md:mx-3 md:w-3/4 md:gap-2 md:rounded-2xl md:border md:py-8 lg:w-full'
+                  '  relative flex h-full w-screen max-w-[800px] flex-col items-center justify-center  border-primary/40 bg-base-100/30 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur md:mx-3 md:h-auto md:w-3/4 md:gap-2 md:rounded-2xl md:border md:py-8 lg:w-full'
                }>
                <Prose>
                   <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}>
@@ -76,7 +76,7 @@ export default function HomeSections() {
                         </div>
                         <Image
                            className={
-                              'mx-auto aspect-square min-w-[160px] w-[45vw] md:max-w-[600px] max-w-[240px] overflow-hidden rounded-xl object-cover object-center transition md:group-hover:grayscale md:w-full md:group-hover:scale-105 md:group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)] md:group-hover:blur-[1px]'
+                              'mx-auto aspect-square w-[45vw] min-w-[160px] max-w-[240px] overflow-hidden rounded-xl object-cover object-center transition md:w-full md:max-w-[600px] md:group-hover:scale-105 md:group-hover:shadow-[0_2px_10px_1px_rgba(0,0,0,0.8)] md:group-hover:blur-[1px] md:group-hover:grayscale'
                            }
                            alt={'Edith Piaf Symphonique'}
                            src={'/assets/piaf.jpg'}
@@ -111,7 +111,7 @@ export default function HomeSections() {
                      </div>
                      <div
                         className={
-                           'aspect-squares  mb-12 md:hidden h-3/4 w-full flex-col items-center justify-end gap-3 transition duration-100 flex'
+                           'aspect-squares  mb-12 flex h-3/4 w-full flex-col items-center justify-end gap-3 transition duration-100 md:hidden'
                         }>
                         <Link
                            className={
@@ -121,7 +121,7 @@ export default function HomeSections() {
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
                            href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
-                          Voir le making off
+                           Voir le making off
                         </Link>
                         <Link
                            className={
@@ -130,7 +130,9 @@ export default function HomeSections() {
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Écouter sur Spotify'}
-                           href={'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'}>
+                           href={
+                              'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'
+                           }>
                            Écouter l&apos;album
                         </Link>
                      </div>

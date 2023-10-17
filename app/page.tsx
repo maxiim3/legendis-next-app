@@ -1,15 +1,17 @@
+import {ObserverBtn} from '@/app/observerBtn';
+import HomeSections from '@/components/home-sections.client';
 import {HeaderBanner} from '@/components/video-player';
 import React from 'react';
-import HomeSections from '@/components/home-sections.client';
 
 export default function LandingPage() {
    return (
       <main
          className={
-            'h-min-screen relative mx-auto overflow-x-hidden flex w-screen flex-col items-center justify-center bg-transparent font-roboto text-balance '
+            'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden bg-transparent font-roboto text-balance '
          }>
          <HeaderBanner />
          <HomeSections />
+
       </main>
    );
 }
