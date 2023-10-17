@@ -2,6 +2,7 @@
 
 import Legendis from '@/components/atoms/Legendis';
 import {cn} from '@/lib/utils';
+import {useI18nContext} from '@/stores/i18n.store';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React, {ComponentPropsWithoutRef} from 'react';
 import {create} from 'zustand';
@@ -23,7 +24,9 @@ const MobileNavigation = () => {
          <nav
             className={cn(
                'flex flex-col pb-16 transition duration-200',
-               isOpen ? 'opacity-1 translate-y-0 gap-2 w-full mx-auto' : 'translate-y-full opacity-0'
+               isOpen
+                  ? 'opacity-1 mx-auto w-full translate-y-0 gap-2'
+                  : 'translate-y-full opacity-0'
             )}>
             <NavigationItems />
          </nav>
@@ -68,6 +71,7 @@ const NavigationItems = ({className}: ComponentPropsWithoutRef<'a'>) => {
    const {sections, scrollToSection, setActiveSection, activeSection} = useNavigationStore(
       store => store
    );
+   const currentLanguage = useI18nContext(store => store.currentLanguage);
 
    const {isOpen, setIsOpen} = useMobileNavigation(store => store);
 
@@ -84,9 +88,9 @@ const NavigationItems = ({className}: ComponentPropsWithoutRef<'a'>) => {
             className
          )}
          href={`#${section.id}`}>
-         {section.title}
+         {section.title[currentLanguage]}
       </a>
    ));
 };
 
-export {DesktopNavigation, LargeScreenNavigation, MobileNavigation};
+export { DesktopNavigation,LargeScreenNavigation,MobileNavigation };

@@ -15,7 +15,7 @@ export type OT_I18N_Setters = {
 
 export const default_language: OT_AvailableLanguages = OZ_AvailableLanguages.Values.fr;
 
-export const useI18n = create<OT_I18N_Setters & OT_I18N_Getters>(set => ({
+export const useI18nContext = create<OT_I18N_Setters & OT_I18N_Getters>(set => ({
    currentLanguage: default_language,
    setCurrentLanguage: value => set({currentLanguage: value}),
    toggleLanguage: () =>
@@ -26,3 +26,9 @@ export const useI18n = create<OT_I18N_Setters & OT_I18N_Getters>(set => ({
                : OZ_AvailableLanguages.Values.en,
       })),
 }));
+
+export const OZ_I18NContent = z.object({
+   en: z.string(),
+   fr: z.string(),
+});
+export type OT_I18NContent = z.infer<typeof OZ_I18NContent>;

@@ -5,13 +5,14 @@ import {Label} from '@/components/ui/label';
 import {Separator} from '@/components/ui/separator';
 import {Switch} from '@/components/ui/switch';
 import {cn} from '@/lib/utils';
-import {OZ_AvailableLanguages, useI18n} from '@/stores/i18n.store';
+import {OZ_AvailableLanguages, useI18nContext} from '@/stores/i18n.store';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React from 'react';
 
 export default function Header() {
    const {sections, setActiveSection, activeSection} = useNavigationStore(store => store);
 
+   const currentLanguage = useI18nContext(store => store.currentLanguage);
    return (
       <header
          className={cn(
@@ -28,13 +29,14 @@ export default function Header() {
             <label
                htmlFor='my-drawer'
                className={cn(
-                  'button-outline btn drawer-button flex h-16 flex-col items-center justify-center px-4 opacity-80 hover:opacity-100'
+                  'button-outline btn drawer-button flex h-16 flex-col items-center justify-center rounded-md px-4 opacity-80 hover:opacity-100'
                )}>
-               {/*<Legendis className={cn('h-8 w-16 fill-primary', 'swap-off')} />*/}
-               <Hamburger />
+               Menu
             </label>
          </div>
-         <aside tabIndex={0} className='drawer-side'>
+         <aside
+            tabIndex={0}
+            className='drawer-side'>
             <label
                htmlFor='my-drawer'
                aria-label='close sidebar'
@@ -71,7 +73,7 @@ export default function Header() {
                            activeSection === section.slug && 'bg-primary text-primary-content'
                         )}
                         href={`#${section.id}`}>
-                        {section.title}
+                        {section.title[currentLanguage]}
                      </a>
                   ))}
                </ul>
@@ -102,7 +104,7 @@ export default function Header() {
 }
 
 function SwitchLanguage() {
-   const {toggleLanguage, currentLanguage} = useI18n(store => store);
+   const {toggleLanguage, currentLanguage} = useI18nContext(store => store);
 
    return (
       <div
