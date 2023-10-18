@@ -42,7 +42,7 @@ export default function Header() {
                aria-label='close sidebar'
                className='drawer-overlay'
             />
-            <nav className='menu flex h-full w-80 flex-col items-center justify-between bg-base-200 py-4 text-base-content'>
+            <nav className='menu flex h-full w-80 flex-col items-center justify-between bg-base-200/80 backdrop-blur py-4 text-base-content'>
                <header className={'flex w-[100%] flex-row items-center justify-between'}>
                   <Legendis className={cn('h-8 w-16 fill-primary')} />
                   <label

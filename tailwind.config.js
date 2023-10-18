@@ -1,6 +1,6 @@
 import twColors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
-import { colors as customColors } from './styles/colors';
+import {colors as customColors} from './styles/colors';
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -54,11 +54,15 @@ module.exports = {
          width: {
             128: '32rem',
             144: '36rem',
+            256: '64rem',
+            512: '128rem',
             ...defaultTheme.width,
          },
          height: {
             128: '32rem',
             144: '36rem',
+            256: '64rem',
+            512: '128rem',
             ...defaultTheme.height,
          },
          spacing: {
