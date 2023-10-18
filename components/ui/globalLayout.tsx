@@ -8,7 +8,7 @@ function Footer() {
 export function GlobalLayout(props: {children: ReactNode}) {
    return (
       <>
-         <Header />
+         {/*<Header />*/}
          {props.children}
          <Footer />
       </>

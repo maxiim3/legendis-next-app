@@ -1,5 +1,4 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import DaisyUITheme from './lib/themes';
 // import { colors as customColors } from './lib/colors';
 /** @type {import('tailwindcss').Config} */
 
@@ -91,14 +90,34 @@ module.exports = {
          },
          // 👇 Custom animation definitions
          animation: {
+            arrow: 'ctaArrow 1s ease-in-out infinite',
             // ... other custom animations
          },
          // 👇 Custom keyframes
          keyframes: {
+            ctaArrow: {
+               '0%': {
+                  opacity: 0,
+                  transform: 'translateX(0)',
+               },
+               '20%': {
+                  opacity: 1,
+                  transform: 'translateX(-6px)',
+               },
+               '80%': {
+                  transform: 'translateX(100px)',
+                  opacity: 0,
+               },
+               '100%': {
+                  opacity: 0,
+               },
+            },
             // ... other custom keyframes
          },
          fontFamily: {
             ...defaultTheme.fontFamily,
+            sans: ['var(--inter)', ...defaultTheme.fontFamily.sans],
+            brand: ['var(--palanquin)', ...defaultTheme.fontFamily.sans],
          },
       },
    },

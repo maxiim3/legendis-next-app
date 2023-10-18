@@ -1,21 +1,27 @@
+'use client';
+
 import cn from '@/lib/utils';
+import {motion} from 'framer-motion';
 import {ComponentPropsWithoutRef} from 'react';
 
 type DSSProps = ComponentPropsWithoutRef<'svg'> & {
    withText?: boolean;
 };
-export default function DSS({withText = false, ...props}: DSSProps) {
+export default function DSSMotion({withText = false, ...props}: DSSProps) {
    return (
       <svg
-         width='402'
-         height='447'
+         width='200'
+         height='223'
          preserveAspectRatio='xMidYMid meet'
          viewBox='0 0 402 447'
          fill='none'
          xmlns='http://www.w3.org/2000/svg'
          {...props}>
          <g id='logo'>
-            <g
+            <motion.g
+               initial={{x: 30, opacity: 0}}
+               animate={{x: 0, opacity: 1}}
+               transition={{duration: 0.25, delay: 1}}
                id='domain'
                className={cn(withText ? 'visible' : 'hidden')}>
                <g id='digitalsolution.studio'>
@@ -108,39 +114,59 @@ export default function DSS({withText = false, ...props}: DSSProps) {
                      fill='white'
                   />
                </g>
-            </g>
+            </motion.g>
             <g id='arrows'>
-               <g id='arrow-down'>
+               <motion.g
+                  initial={{y: 30, opacity: 0}}
+                  animate={{y: 0, opacity: 1}}
+                  transition={{duration: 0.25, delay: 0.6}}
+                  id='arrow-down'>
                   <path
                      id='Union'
                      d='M211.5 57.5H214.5V15L239.5 32.5H241L241.5 29L214.5 0H211.5L184.5 29L185 32.5H186.5L211.5 15V57.5Z'
                      fill='white'
                   />
-               </g>
-               <g id='arrow-up'>
+               </motion.g>
+               <motion.g
+                  initial={{y: -30, opacity: 0}}
+                  animate={{y: 0, opacity: 1}}
+                  transition={{duration: 0.25, delay: 0.6}}
+                  id='arrow-up'>
                   <path
                      id='Union_2'
                      d='M214.5 389.5L211.5 389.5L211.5 432L186.5 414.5L185 414.5L184.5 418L211.5 447L214.5 447L241.5 418L241 414.5L239.5 414.5L214.5 432L214.5 389.5Z'
                      fill='white'
                   />
-               </g>
+               </motion.g>
             </g>
-            <g id='letters'>
-               <g id='letter-d'>
+            <motion.g
+               initial={{opacity: 0}}
+               animate={{opacity: 1}}
+               transition={{duration: 0.8}}
+               id='letters'>
+               <motion.g
+                  initial={{x: -50, opacity: 0}}
+                  animate={{x: 0, opacity: 1}}
+                  transition={{duration: 0.6}}
+                  id='letter-d'>
                   <path
                      id='Vector 13'
                      d='M30 67.5V379.5H150C181 379.5 220.2 351.7 245 308.5L203 267C195 282.5 179.3 306.3 162.5 315.5C150 325.5 124.7 325.9 85.5 325.5V122H126C155 123.5 170.8 133.8 186 157C186 138.5 185.4 125.4 211 95C203.833 87.6667 182.9 72.3 156.5 69.5L30 67.5Z'
                      fill='white'
                   />
-               </g>
-               <g id='letter-s'>
+               </motion.g>
+               <motion.g
+                  initial={{x: 50, opacity: 0}}
+                  animate={{x: 0, opacity: 1}}
+                  transition={{duration: 0.6}}
+                  id='letter-s'>
                   <path
                      id='Vector 14'
                      d='M353 164L402 129C395.167 117 375.8 90.1001 353 78.5001C324.5 64.0001 258.5 53.0001 217.5 95.5001C184.7 129.5 186.5 168 191.5 183C194.833 196.833 211.1 227.6 249.5 240C287.9 252.4 302.5 255.5 305 255.5C315 257.333 336.2 265.9 341 285.5C345.8 305.1 326 319.667 315.5 324.5C310.667 326.167 296.2 329 277 327C267.4 326.454 254.5 320.5 246.5 314C242.9 324.4 224 347 208.5 359.5C221.667 367.833 243.4 378.6 273 381C302.6 383.4 327.333 377.667 336 374.5C351.833 368.833 386.1 347.3 396.5 306.5C406.9 265.7 384.833 233.167 372.5 222C365 215.667 343.7 201.8 318.5 197C293.3 192.2 272.667 185.667 265.5 183C246 173 241.5 159 251 138C263.5 123 281.5 115.671 305 120C324 123.5 343.8 137.6 353 164Z'
                      fill='white'
                   />
-               </g>
-            </g>
+               </motion.g>
+            </motion.g>
          </g>
       </svg>
    );

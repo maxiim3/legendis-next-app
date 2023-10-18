@@ -1,7 +1,8 @@
 import {GlobalLayout} from '@/components/ui/globalLayout';
-import {inter} from '@/lib/fonts';
+import {inter, palanquin} from '@/lib/fonts';
 import cn from '@/lib/utils';
 import type {Metadata} from 'next';
+import React from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -14,7 +15,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <html
          lang='en'
          data-theme={'dark'}>
-         <body className={cn('bg-base-300 text-base-content', inter.className)}>
+         <body
+            className={cn('bg-base-300 text-base-content', inter.className, palanquin.className)}>
             <GlobalLayout>{children}</GlobalLayout>
          </body>
       </html>
