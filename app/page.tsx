@@ -10,9 +10,8 @@ export default function Home() {
    return (
       <main className={cn('relative mx-auto h-screen w-screen overflow-hidden ')}>
          <section className='isolate mx-auto h-full w-full overflow-hidden px-6 pt-14 lg:px-8'>
-            <BlobBackground />
-
             <div className='mx-auto max-w-2xl py-32 sm:py-48 lg:py-56'>
+               <BlobBackground />
                <header className={cn(flexStack({center: true}), 'mb-8')}>
                   <DSSMotion
                      width={256}
@@ -30,17 +29,17 @@ export default function Home() {
                      animate={{y: 0}}
                      duration={0.25}
                      delay={1.25}>
-                     <Heading1>Give your brand the visibility it deserves</Heading1>
+                     <Heading1>Give your brand the visibility it deserve</Heading1>
                   </FadeInContentMotion>
                   <FadeInContentMotion
                      duration={0.5}
                      delay={1.5}>
                      <div className={'space-y-1'}>
-                        <Text className='font-brand text-auto m-0 mt-6 text-center text-lg leading-8 text-gray-100 md:text-lg lg:text-xl'>
+                        <Text className='text-auto m-0 mt-6 text-center font-brand text-lg leading-8 text-gray-100 md:text-lg lg:text-xl'>
                            We create custom solutions for your business.
                         </Text>
 
-                        <Text className='font-brand text-auto mt-6 text-center text-lg leading-8 text-gray-100 md:text-lg lg:text-xl'>
+                        <Text className='text-auto mt-6 text-center font-brand text-lg leading-8 text-gray-100 md:text-lg lg:text-xl'>
                            Out team is ready to help you with your next project.
                         </Text>
                      </div>
