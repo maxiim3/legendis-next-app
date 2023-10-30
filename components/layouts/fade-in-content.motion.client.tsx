@@ -2,7 +2,7 @@
 
 import cn from '@/lib/utils';
 import {motion} from 'framer-motion';
-import {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 
 type Props = {
    className?: ComponentPropsWithoutRef<'div'>['className'];

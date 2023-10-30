@@ -1,6 +1,6 @@
 import cn from '@/lib/utils';
 import {cva} from 'class-variance-authority';
-import {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 
 export const globalHeadingStyles = cva(
    'font-inter selection:bg-accent/50 selection:text-accent-content font-normal text-base-content'

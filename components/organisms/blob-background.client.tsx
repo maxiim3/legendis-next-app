@@ -1,6 +1,21 @@
 'use client';
+import init from '@/pkg/digital_solution_studio';
+import {memo, useEffect} from 'react';
 
 export default function BlobBackground({alt = false}: {alt?: boolean}) {
+   useEffect(() => {
+      console.log('WASM');
+      init().then(e => {
+         console.log(e);
+         e.run_log();
+         const ptrPerson = e.get_person();
+         const age = e.person_age(ptrPerson);
+         const name = e.person_name(ptrPerson, ptrPerson);
+         const re2 = e.add(1.5, 1.4);
+         console.log(ptrPerson, name, age);
+         console.log(re2);
+      });
+   }, []);
    if (!alt)
       return (
          <div

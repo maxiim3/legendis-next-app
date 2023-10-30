@@ -1,6 +1,6 @@
 import cn from '@/lib/utils';
 import {cva} from 'class-variance-authority';
-import {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 
 export const flexStack = cva('flex w-[100%]', {
    variants: {

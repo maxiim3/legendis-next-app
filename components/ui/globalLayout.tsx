@@ -1,5 +1,5 @@
 import {Header} from '@/components/organisms/header';
-import {ReactNode} from 'react';
+import {type ReactNode} from 'react';
 
 function Footer() {
    return <footer></footer>;

@@ -2,7 +2,7 @@
 
 import cn from '@/lib/utils';
 import {motion} from 'framer-motion';
-import {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 
 type DSSProps = ComponentPropsWithoutRef<'svg'> & {
    withText?: boolean;
@@ -21,7 +21,7 @@ export default function DSSMotion({withText = false, ...props}: DSSProps) {
             <motion.g
                initial={{x: 30, opacity: 0}}
                animate={{x: 0, opacity: 1}}
-               transition={{duration: 0.25, delay: 1}}
+               transition={{duration: 0.25, delay: 0.5}}
                id='domain'
                className={cn(withText ? 'visible' : 'hidden')}>
                <g id='digitalsolution.studio'>
@@ -119,7 +119,7 @@ export default function DSSMotion({withText = false, ...props}: DSSProps) {
                <motion.g
                   initial={{y: 30, opacity: 0}}
                   animate={{y: 0, opacity: 1}}
-                  transition={{duration: 0.25, delay: 0.6}}
+                  transition={{duration: 0.25, delay: 0.5}}
                   id='arrow-down'>
                   <path
                      id='Union'
@@ -130,7 +130,7 @@ export default function DSSMotion({withText = false, ...props}: DSSProps) {
                <motion.g
                   initial={{y: -30, opacity: 0}}
                   animate={{y: 0, opacity: 1}}
-                  transition={{duration: 0.25, delay: 0.6}}
+                  transition={{duration: 0.25, delay: 0.5}}
                   id='arrow-up'>
                   <path
                      id='Union_2'
@@ -142,12 +142,12 @@ export default function DSSMotion({withText = false, ...props}: DSSProps) {
             <motion.g
                initial={{opacity: 0}}
                animate={{opacity: 1}}
-               transition={{duration: 0.8}}
+               transition={{duration: 0.5}}
                id='letters'>
                <motion.g
                   initial={{x: -50, opacity: 0}}
                   animate={{x: 0, opacity: 1}}
-                  transition={{duration: 0.6}}
+                  transition={{duration: 0.5}}
                   id='letter-d'>
                   <path
                      id='Vector 13'
@@ -158,7 +158,7 @@ export default function DSSMotion({withText = false, ...props}: DSSProps) {
                <motion.g
                   initial={{x: 50, opacity: 0}}
                   animate={{x: 0, opacity: 1}}
-                  transition={{duration: 0.6}}
+                  transition={{duration: 0.5}}
                   id='letter-s'>
                   <path
                      id='Vector 14'

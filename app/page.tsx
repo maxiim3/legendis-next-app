@@ -12,14 +12,18 @@ export default function Home() {
          <section className='isolate mx-auto h-full w-full overflow-hidden px-6 pt-14 lg:px-8'>
             <div className='mx-auto max-w-2xl py-32 sm:py-48 lg:py-56'>
                <BlobBackground />
-               <header className={cn(flexStack({center: true}), 'mb-8')}>
+               <header className={cn(flexStack({center: true}), 'group/logo mb-8 ')}>
                   <DSSMotion
                      width={256}
                      height={256}
                      withText
                      className={'mx-auto my-8 fill-base-content'}
                   />
-                  <FadeInContentMotion>
+                  <FadeInContentMotion
+                     initial={{y: 100}}
+                     animate={{y: 0}}
+                     duration={0.25}
+                     delay={0.75}>
                      <AnimatedHeading />
                   </FadeInContentMotion>
                </header>
@@ -28,12 +32,12 @@ export default function Home() {
                      initial={{y: 100}}
                      animate={{y: 0}}
                      duration={0.25}
-                     delay={1.25}>
+                     delay={0.8}>
                      <Heading1>Give your brand the visibility it deserve</Heading1>
                   </FadeInContentMotion>
                   <FadeInContentMotion
                      duration={0.5}
-                     delay={1.5}>
+                     delay={1}>
                      <div className={'space-y-1'}>
                         <Text className='text-auto m-0 mt-6 text-center font-brand text-lg leading-8 text-gray-100 md:text-lg lg:text-xl'>
                            We create custom solutions for your business.
@@ -46,7 +50,7 @@ export default function Home() {
                   </FadeInContentMotion>
                   <FadeInContentMotion
                      duration={0.5}
-                     delay={1.5}>
+                     delay={1}>
                      <section
                         className={cn(
                            flexStack({

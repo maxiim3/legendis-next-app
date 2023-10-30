@@ -42,3 +42,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 #next-env.d.ts // unmute this
+
+
+# Added by cargo
+
+/target
+/Cargo.lock
