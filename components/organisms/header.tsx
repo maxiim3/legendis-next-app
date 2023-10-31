@@ -8,6 +8,7 @@ import {cn} from '@/lib/utils';
 import {OZ_AvailableLanguages, useI18nContext} from '@/stores/i18n.store';
 import {useNavigationStore} from '@/stores/navigation.store';
 import React from 'react';
+import Link from 'next/link';
 
 export default function Header() {
    const {sections, setActiveSection, activeSection} = useNavigationStore(store => store);
@@ -76,6 +77,16 @@ export default function Header() {
                         {section.title[currentLanguage]}
                      </a>
                   ))}
+                  <Link
+                     target='_blank'
+                     rel='noopener noreferrer'
+                     type={'external'}
+                     href={'https://prod203.com/contact'}
+                     className={cn(
+                        'btn btn-primary rounded px-4 py-2  hover:border-none',
+                     )}>
+                     Nous contacter
+                  </Link>
                </ul>
                <Separator className={'opacity-50'} />
                <SwitchLanguage />

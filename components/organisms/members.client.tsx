@@ -15,7 +15,6 @@ export default function Members() {
    const currentLanguage = useI18nContext(store => store.currentLanguage);
    return (
       <SectionTemplateWrapper
-         className={'pb-24 rounded-b-xl mb-12'}
          slug={team.slug}
          id={team.id}>
          <Prose className={'mx-auto text-center pb-16 '}>

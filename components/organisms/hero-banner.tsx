@@ -18,7 +18,7 @@ export default function HeroBanner() {
          className={'relative top-0 flex h-screen w-screen flex-col items-center justify-center'}>
          <div
             className={
-               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center  border-base-200/40 bg-base-100/60 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
+               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center border-base-200/40 bg-base-100/60 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
             }>
             <Prose>
                <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}>
@@ -36,14 +36,13 @@ export default function HeroBanner() {
             </Prose>
             <article
                className={
-                  'flex w-full flex-col gap-1 border-t border-base-300/40 md:justify-around  md:pt-12'
+                  'flex w-full flex-col gap-1  md:justify-around  md:pt-12'
                }>
                <Prose
                   className={
                      ' flex- prose flex-1 flex-col items-center justify-center text-center text-balance'
                   }>
                   <Text className={'m-0 mb-4 p-0'}>
-                     {' '}
                      {currentLang === 'fr' ? 'Découvrez' : 'Last Release'}
                   </Text>
                   <h3 className={'m-0 p-0 text-3xl uppercase text-base-content'}>

@@ -1,7 +1,7 @@
 import SectionReferenceFactory from '@/builders/section-reference.builder';
 import {create} from 'zustand';
 
-export type SectionKeys = 'presentation' | 'team'
+export type SectionKeys = 'presentation' | 'team';
 // export type SectionKeys = 'presentation' | 'team' | 'artists' | 'projects';
 export type NavigationStore = {
    // GETTERS
