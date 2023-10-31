@@ -26,5 +26,5 @@
 import {NextResponse} from 'next/server';
 
 export async function GET() {
-   return NextResponse.redirect('/');
+   return NextResponse.json({message: 'Hello World'})
 }
