@@ -26,7 +26,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   objectFit={'cover'}
                   layout={'fill'}
                   quality={100}
-                  className={'blur-sm'}
+                  className={'blur-[2px]'}
                   alt={'Legendis Orchestra'}
                />
             </div>
