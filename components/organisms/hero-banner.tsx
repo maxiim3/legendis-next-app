@@ -60,7 +60,7 @@ export default function HeroBanner() {
                   {/*   message={'Voir le making off sur Youtube'}>*/}
                   <div className={'group relative mx-auto my-8 h-fit w-fit'}>
                      <div className='badge badge-primary absolute right-2 top-0 z-50 hidden translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:translate-y-4 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 md:flex'>
-                        Nouvelle Sortie
+                        {currentLang === "fr" ?   "Nouvelle Sortie": "New Album" }
                      </div>
                      <Image
                         className={
