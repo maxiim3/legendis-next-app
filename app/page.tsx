@@ -1,23 +1,19 @@
-import {HeaderBanner} from '@/components/video-player';
+import HeroBanner from '@/components/organisms/hero-banner';
+import Members from '@/components/organisms/members.client';
 import React from 'react';
-import HomeSections from '@/components/home-sections.client';
+import Presentation from '@/components/organisms/presentation.client';
 
-export default function LandingPage() {
+export default function HomePage() {
    return (
       <main
          className={
-            'h-min-screen relative mx-auto overflow-x-hidden flex w-screen flex-col items-center justify-center bg-transparent font-roboto text-balance '
+            'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden bg-transparent font-roboto text-balance '
          }>
-         <HeaderBanner />
-         <HomeSections />
+         {/*<VideoHero />*/}
+         <HeroBanner />
+         <Presentation />
+         <Members />
+         {/*<SpotifyGrid />*/}
       </main>
    );
 }
-// <main className={"relative "}>
-// 	<div className="fixed left-0 top-0 z-30 m-0 aspect-auto h-screen w-screen overflow-hidden p-0 [&_*]:aspect-auto [&_*]:p-0">
-// 		{/*<Suspense fallback={<p>Loading</p>}>*/}
-// 		{/*	<VideoPlayer />*/}
-// 		{/*</Suspense>*/}
-// 	</div>
-// 	<Hero />
-// </main>

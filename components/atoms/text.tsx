@@ -5,7 +5,7 @@ const Text = ({children, id, className}: ComponentPropsWithoutRef<'p'>) => (
    <p
       id={id}
       className={cn(
-         'text-sm font-normal leading-relaxed tracking-wider text-primary text-balance sm:text-base',
+         'text-base font-normal leading-relaxed tracking-wider text-primary text-balance',
          className,
       )}>
       {children}

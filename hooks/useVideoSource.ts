@@ -1,6 +1,7 @@
 import {CloudinaryVideoPlayer} from 'next-cloudinary'
 import {MutableRefObject, useCallback} from 'react'
-import {useAppState} from '@/components/video-player';
+
+import {useAppState} from '@/components/organisms/video-hero.client';
 
 /**
  * Custom hook to determine the most appropriate video source based on network and screen size.

@@ -1,10 +1,10 @@
 'use client';
 
-import Text from '@/components/atoms/text';
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource';
 import {cn} from '@/lib/utils';
 import {motion, useScroll, useTransform} from 'framer-motion';
 import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary';
+import Image from 'next/image';
 import React, {Suspense, useEffect, useRef} from 'react';
 import {create} from 'zustand';
 
@@ -24,10 +24,9 @@ export const useAppState = create<AppState>(set => ({
    setIsVideoLoaded: () => set({isVideoLoaded: true}),
 }));
 
-export function HeaderBanner() {
+export default function VideoHero() {
    let {scrollYProgress} = useScroll();
 
-   let scale = useTransform(scrollYProgress, [0, 1], ['100%', '300%']);
    let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '40%']);
 
    console.log();
@@ -36,24 +35,30 @@ export function HeaderBanner() {
          <motion.section
             id={'hero'}
             style={{
-               scale,
                opacity,
             }}
             aria-label={'Video hero banner'}
             className={cn(
-               'fixed top-0 mx-auto h-screen w-screen overflow-hidden'
+               'absolute top-0 mx-auto h-screen w-screen overflow-hidden'
                // 'lg:aspect-video lg:h-auto '
             )}>
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Suspense>
-               <VideoPlayer />
+               {/*<VideoPlayer />*/}
+               <Image
+                  src={'/assets/orchestra02.webp'}
+                  sizes={''}
+                  className={'object-cover object-center mask mask-square'}
+                  fill={true}
+                  alt={''}
+               />
             </Suspense>
          </motion.section>
       </>
    );
 }
 
-export default function VideoPlayer() {
+export function VideoPlayer() {
    const {isVideoLoaded, setIsVideoLoaded, setComponentMounted, componentMounted} = useAppState(
       state => state
    );
@@ -98,24 +103,25 @@ export default function VideoPlayer() {
    ]);
 
    /*Handle Load Failed on no internet : Display an image placeholder instead of the video*/
-   if (!componentMounted) {
-      return (
-         <div
-            className={
-               'flex h-full w-full animate-pulse flex-col items-center justify-center bg-base-100/70'
-            }>
-            <Text className={'space-x-3'}>
-               <span className='loading loading-spinner loading-lg text-primary' />
-               Legendis
-            </Text>
-         </div>
-      );
-   }
+   // if (!componentMounted) {
+   //    return (
+   //       <div
+   //          className={
+   //             'flex h-full w-full animate-pulse flex-col items-center justify-center bg-base-100/70'
+   //          }>
+   //          <Text className={'space-x-3'}>
+   //             <span className='loading loading-spinner loading-lg text-primary' />
+   //             Legendis
+   //          </Text>
+   //       </div>
+   //    );
+   // }
    return (
       <motion.div
          initial={{opacity: 0}}
          animate={{opacity: 1}}
-         transition={{duration: 4, delay: 0.5}}>
+         transition={{duration: 4, delay: 0.5}}
+         className={'h-screen w-screen overflow-hidden'}>
          <CldVideoPlayer
             width={1920}
             height={1080}
@@ -137,7 +143,7 @@ export default function VideoPlayer() {
             videoRef={videoRef}
             src={VIDEO_SOURCE.VERY_HIGH}
             className={cn(
-               'absolute top-0 m-0 mx-auto object-contain object-center p-0',
+               'h-screen w-screen object-contain object-center p-0',
                problematicAddedElement && '![&_*]:p-0 ![&>[aria-label="Video_Player]:p-0 '
             )}
          />
