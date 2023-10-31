@@ -1,3 +1,5 @@
+'use client'
+
 import Legendis from '@/components/atoms/Legendis';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
@@ -6,14 +8,17 @@ import CtaButton from '@/components/molecules/cta-button.client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {Suspense} from 'react';
+import {useI18nContext} from '@/stores/i18n.store';
 
 export default function HeroBanner() {
+   const currentLang = useI18nContext(store => store.currentLanguage)
+
    return (
       <section
          className={'relative top-0 flex h-screen w-screen flex-col items-center justify-center'}>
          <div
             className={
-               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center  border-primary/40 bg-base-100/30 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
+               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center  border-base-200/40 bg-base-content/10 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
             }>
             <Prose>
                <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}>
@@ -24,7 +29,7 @@ export default function HeroBanner() {
                   Legendis
                </Heading2>
                <small className={'text-center text-primary/80'}>
-                  Un label Jamais 203 Productions
+                 {currentLang === "fr" ?   "Un label Jamais 203 Productions": "A Jamais 203 Productions Label" }
                </small>
             </Prose>
             <article
@@ -35,11 +40,12 @@ export default function HeroBanner() {
                   className={
                      ' flex- prose flex-1 flex-col items-center justify-center text-center text-balance'
                   }>
-                  <Text className={'m-0 mb-4 p-0'}>Découvrez</Text>
+                  <Text className={'m-0 mb-4 p-0'}> {currentLang === "fr" ?   "Découvrez": "Last Release" }</Text>
                   <h3 className={'m-0 p-0 text-3xl uppercase text-base-content'}>
                      Edith Piaf Symphonique
                   </h3>
-                  <small>En partenariat avec Warner Music France</small>
+                  <small> {currentLang === "fr" ?   "Produit par Warner Music France": "A Warner Music France Production" }</small>
+
                </Prose>
                <Suspense
                   fallback={
@@ -76,7 +82,7 @@ export default function HeroBanner() {
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
-                           href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
+                           href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t'}>
                            Making Off
                         </Link>
                         <Link
@@ -86,8 +92,10 @@ export default function HeroBanner() {
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
-                           href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
-                           Album
+                           href={
+                              'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'
+                           }>
+                           {currentLang === "fr" ?   "Écouter l'Album": "Listen to the Album" }
                         </Link>
                      </div>
                   </div>
@@ -102,8 +110,8 @@ export default function HeroBanner() {
                         target={'_blank'}
                         referrerPolicy={'no-referrer'}
                         title={'Voir le Making off sur youtube'}
-                        href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t=52s'}>
-                        Voir le making off
+                        href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t'}>
+                        Making Off
                      </Link>
                      <Link
                         className={
@@ -115,7 +123,7 @@ export default function HeroBanner() {
                         href={
                            'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'
                         }>
-                        Écouter l&apos;album
+                        {currentLang === "fr" ?   "Écouter l'Album": "Listen to the Album" }
                      </Link>
                   </div>
                   {/*</Tooltip>*/}

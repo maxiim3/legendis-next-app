@@ -26,11 +26,11 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
-    "daisyui": "^3.8.3",
+    "daisyui": "^3.9.4",
     "framer-motion": "^10.16.4",
-    "lucide-react": "^0.287.0",
-    "next": "13.5.4",
-    "next-cloudinary": "^4.24.0",
+    "lucide-react": "^0.291.0",
+    "next": "14.0.1",
+    "next-cloudinary": "^5.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
@@ -38,7 +38,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-text-balance": "^0.0.7",
     "zod": "^3.22.4",
-    "zustand": "^4.4.3"
+    "zustand": "^4.4.5"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -48,13 +48,13 @@
     "autoprefixer": "^10",
     "clsx": "^2.0.0",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "14.0.1",
     "postcss": "^8",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "prettier-plugin-tailwindcss": "^0.5.5",
-    "tailwind-merge": "^1.14.0",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3",
     "typescript": "^5"
   }

@@ -1,7 +1,8 @@
 import SectionReferenceFactory from '@/builders/section-reference.builder';
 import {create} from 'zustand';
 
-export type SectionKeys = 'presentation' | 'team' | 'artists' | 'projects';
+export type SectionKeys = 'presentation' | 'team'
+// export type SectionKeys = 'presentation' | 'team' | 'artists' | 'projects';
 export type NavigationStore = {
    // GETTERS
    sections: Record<SectionKeys, SectionReferenceFactory>;
@@ -27,16 +28,16 @@ export const useNavigationStore = create<NavigationStore>(set => ({
          title: {fr: "L'équipe", en: 'Team'},
          slug: 'team',
       }),
-      artists: SectionReferenceFactory.createSection({
-         id: '3',
-         title: {fr: 'Les artistes', en: 'Artists'},
-         slug: 'artists',
-      }),
-      projects: SectionReferenceFactory.createSection({
-         id: '4',
-         title: {fr: 'Projets', en: 'Projects'},
-         slug: 'projects',
-      }),
+      // artists: SectionReferenceFactory.createSection({
+      //    id: '3',
+      //    title: {fr: 'Les artistes', en: 'Artists'},
+      //    slug: 'artists',
+      // }),
+      // projects: SectionReferenceFactory.createSection({
+      //    id: '4',
+      //    title: {fr: 'Projets', en: 'Projects'},
+      //    slug: 'projects',
+      // }),
    },
 
    activeSection: null,

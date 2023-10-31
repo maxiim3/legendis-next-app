@@ -4,6 +4,7 @@ import {useVideoSource, VideoSource} from '@/hooks/useVideoSource';
 import {cn} from '@/lib/utils';
 import {motion, useScroll, useTransform} from 'framer-motion';
 import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary';
+import Image from 'next/image';
 import React, {Suspense, useEffect, useRef} from 'react';
 import {create} from 'zustand';
 
@@ -43,7 +44,14 @@ export default function VideoHero() {
             )}>
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Suspense>
-               <VideoPlayer />
+               {/*<VideoPlayer />*/}
+               <Image
+                  src={'/assets/orchestra02.webp'}
+                  sizes={''}
+                  className={'object-cover object-center mask mask-square'}
+                  fill={true}
+                  alt={''}
+               />
             </Suspense>
          </motion.section>
       </>

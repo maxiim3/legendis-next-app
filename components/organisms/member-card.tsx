@@ -1,10 +1,11 @@
 'use client';
 
-import {cn} from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { useI18nContext } from '@/stores/i18n.store';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {ComponentPropsWithoutRef, useEffect, useState} from 'react';
-import {twMerge} from 'tailwind-merge';
+import React,{ ComponentPropsWithoutRef,useEffect,useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 export type TabType = Record<
    string,
@@ -59,13 +60,12 @@ const membersCollection = {
    },
 };
 
-const useLangParams = (lang: 'fr' | 'en') => {
-   return lang;
-};
+
 export default function SectionFounders({className}: ComponentPropsWithoutRef<'section'>) {
    const tabs: TabType = membersCollection;
    const {activeTab, setActiveTab} = useTabs(tabs);
-   let lang = useLangParams('fr');
+   let currentLanguage = useI18nContext(store => store.currentLanguage);
+
 
    type ImageComponentProps = {
       li?: ComponentPropsWithoutRef<'li'>;
@@ -163,20 +163,20 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                            'flex flex-1 items-center justify-center py-1 text-center text-xs xs:text-sm sm:tracking-wide md:py-3 md:text-base',
                            'hover:bg-base-200'
                         )}>
-                        <p>{value.title[lang]}</p>
+                        <p>{value.title[currentLanguage]}</p>
                      </TabTitle>
                   ))}
                </ul>
             </header>
             <main className={' flex flex-col items-center justify-center gap-2 px-2 md:px-6'}>
-               {tabs[activeTab]?.description[lang].split('. ').map((content, index) => (
+               {tabs[activeTab]?.description[currentLanguage].split('. ').map((content, index) => (
                   <TabText
                      className={
                         'font-poppins prose m-0 w-full max-w-[80ch] font-light !text-base-content text-balance'
                      }
                      key={`tab-content-${index}`}>
                      {content}
-                     {tabs[activeTab]?.description[lang].length - 1 === index ? '' : '.'}
+                     {tabs[activeTab]?.description[currentLanguage].length - 1 === index ? '' : '.'}
                   </TabText>
                ))}
                <aside className={'w-full'}>
@@ -184,7 +184,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                      className={
                         'text-base-content-content tooltip-bottom tooltip-primary font-normal'
                      }
-                     message={lang === 'en' ? 'Open in a new tab' : 'Ouvrir dans un nouvel onglet'}>
+                     message={currentLanguage === 'en' ? 'Open in a new tab' : 'Ouvrir dans un nouvel onglet'}>
                      {activeTab === 'Jerome' && (
                         <TabText
                            className={
@@ -206,7 +206,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                            </span>
                            <Link
                               title={
-                                 lang === 'en'
+                                 currentLanguage === 'en'
                                     ? 'Open in a new tab'
                                     : 'Ouvrir dans un nouvel onglet'
                               }
@@ -217,7 +217,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                                  'font-poppins prose m-0 w-full text-sm font-normal tracking-wide !text-base-content text-balance visited:opacity-70 visited:hover:opacity-100'
                               }
                               href={'https://www.jeromekuhn.com/fr/medias/'}>
-                              {lang === 'en'
+                              {currentLanguage === 'en'
                                  ? "Jérôme Khun's Official website"
                                  : 'Site officiel de Jérôme Khun'}
                            </Link>
@@ -244,7 +244,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                            </span>
                            <Link
                               title={
-                                 lang === 'en'
+                                 currentLanguage === 'en'
                                     ? 'Open in a new tab'
                                     : 'Ouvrir dans un nouvel onglet'
                               }
@@ -255,7 +255,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                               rel='noopener noreferrer'
                               type={'external'}
                               href={'https://nathanstornetta.com/'}>
-                              {lang === 'en'
+                              {currentLanguage === 'en'
                                  ? "Nathan Stornetta's Official website"
                                  : 'Site officiel de Nathan Stornetta'}
                            </Link>
