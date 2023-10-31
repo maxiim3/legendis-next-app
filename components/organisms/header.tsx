@@ -85,7 +85,7 @@ export default function Header() {
                      className={cn(
                         'btn btn-primary rounded px-4 py-2  hover:border-none',
                      )}>
-                     Nous contacter
+                     {currentLanguage=== 'fr' ? 'Nous contacter' : 'Contact us'}
                   </Link>
                </ul>
                <Separator className={'opacity-50'} />
