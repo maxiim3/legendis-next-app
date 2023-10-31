@@ -17,7 +17,7 @@ const SheetClose = SheetPrimitive.Close;
 const SheetPortal = ({
    className,
    ...props
-}: SheetPrimitive.DialogPortalProps & ComponentPropsWithoutRef<'dialog'>) => (
+}: SheetPrimitive.DialogPortalProps & ComponentPropsWithoutRef<'dialog'> & any) => (
    <SheetPrimitive.Portal
       className={cn(className)}
       {...props}
