@@ -116,7 +116,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
    return (
       <section
          className={twMerge(
-            'relative flex w-full max-w-[1600px] flex-col lg:grid lg:grid-cols-2 lg:gap-2',
+            'relative flex w-full max-w-[1440px] flex-col lg:grid lg:grid-cols-2 mx-auto',
             className
          )}>
          <ul
@@ -168,7 +168,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                   ))}
                </ul>
             </header>
-            <main className={' flex flex-col items-center justify-center gap-2 px-2 md:px-6'}>
+            <main className={' flex flex-col items-center justify-center gap-2 px-2 md:px-6 pb-8'}>
                {tabs[activeTab]?.description[currentLanguage].split('. ').map((content, index) => (
                   <TabText
                      className={

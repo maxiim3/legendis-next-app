@@ -22,7 +22,7 @@ export default function Presentation() {
    return (
       <SectionTemplateWrapper
          slug={presentation.slug}
-         className={'mt-4  p-2 px-1  sm:px-3 '}
+         className={'mt-4  p-2 px-1  sm:px-3 rounded-t-xl'}
          id={presentation.id}>
          <Prose className={'mx-auto px-2 pb-8 pt-48 text-center'}>
             <Heading2>{PageTitle.get(currentLanguage)}</Heading2>

@@ -15,13 +15,12 @@ export default function Members() {
    const currentLanguage = useI18nContext(store => store.currentLanguage);
    return (
       <SectionTemplateWrapper
+         className={'pb-24 rounded-b-xl mb-12'}
          slug={team.slug}
          id={team.id}>
-         <Prose className={'mx-auto text-center'}>
+         <Prose className={'mx-auto text-center pb-16 '}>
             <Heading2>{SectionTitle.get(currentLanguage)}</Heading2>
-            <Text className='mx-auto pb-6 text-center text-3xl font-extrabold text-base-content/80 xl:text-4xl'>
-               {SectionDescription.get(currentLanguage)}
-            </Text>
+
          </Prose>
          <div className='flex w-full '>
             <MemberCard />
@@ -29,11 +28,6 @@ export default function Members() {
       </SectionTemplateWrapper>
    );
 }
-
-const SectionDescription = I18nContent.create({
-   fr: 'Les membres de notre équipe talentueuse',
-   en: 'The members of our talented team',
-});
 
 const SectionTitle = I18nContent.create({
    fr: 'L\'Équipe',

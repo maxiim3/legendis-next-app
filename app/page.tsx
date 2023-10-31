@@ -1,7 +1,7 @@
 import HeroBanner from '@/components/organisms/hero-banner';
 import Members from '@/components/organisms/members.client';
-import React from 'react';
 import Presentation from '@/components/organisms/presentation.client';
+import React from 'react';
 
 export default function HomePage() {
    return (
@@ -11,8 +11,10 @@ export default function HomePage() {
          }>
          {/*<VideoHero />*/}
          <HeroBanner />
-         <Presentation />
-         <Members />
+         <div >
+            <Presentation />
+            <Members />
+         </div>
          {/*<SpotifyGrid />*/}
       </main>
    );

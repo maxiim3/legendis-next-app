@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
 import Legendis from '@/components/atoms/Legendis';
 import Prose from '@/components/atoms/Prose';
 import Heading2 from '@/components/atoms/heading-2';
 import Text from '@/components/atoms/text';
 import CtaButton from '@/components/molecules/cta-button.client';
+import {useI18nContext} from '@/stores/i18n.store';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {Suspense} from 'react';
-import {useI18nContext} from '@/stores/i18n.store';
 
 export default function HeroBanner() {
-   const currentLang = useI18nContext(store => store.currentLanguage)
+   const currentLang = useI18nContext(store => store.currentLanguage);
 
    return (
       <section
          className={'relative top-0 flex h-screen w-screen flex-col items-center justify-center'}>
          <div
             className={
-               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center  border-base-200/40 bg-base-content/10 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
+               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center  border-base-200/40 bg-base-100/60 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
             }>
             <Prose>
                <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}>
@@ -29,7 +29,9 @@ export default function HeroBanner() {
                   Legendis
                </Heading2>
                <small className={'text-center text-primary/80'}>
-                 {currentLang === "fr" ?   "Un label Jamais 203 Productions": "A Jamais 203 Productions Label" }
+                  {currentLang === 'fr'
+                     ? 'Un label Jamais 203 Productions'
+                     : 'A Jamais 203 Productions Label'}
                </small>
             </Prose>
             <article
@@ -40,12 +42,19 @@ export default function HeroBanner() {
                   className={
                      ' flex- prose flex-1 flex-col items-center justify-center text-center text-balance'
                   }>
-                  <Text className={'m-0 mb-4 p-0'}> {currentLang === "fr" ?   "Découvrez": "Last Release" }</Text>
+                  <Text className={'m-0 mb-4 p-0'}>
+                     {' '}
+                     {currentLang === 'fr' ? 'Découvrez' : 'Last Release'}
+                  </Text>
                   <h3 className={'m-0 p-0 text-3xl uppercase text-base-content'}>
                      Edith Piaf Symphonique
                   </h3>
-                  <small> {currentLang === "fr" ?   "Produit par Warner Music France": "A Warner Music France Production" }</small>
-
+                  <small>
+                     {' '}
+                     {currentLang === 'fr'
+                        ? 'Produit par Warner Music France'
+                        : 'A Warner Music France Production'}
+                  </small>
                </Prose>
                <Suspense
                   fallback={
@@ -60,7 +69,7 @@ export default function HeroBanner() {
                   {/*   message={'Voir le making off sur Youtube'}>*/}
                   <div className={'group relative mx-auto my-8 h-fit w-fit'}>
                      <div className='badge badge-primary absolute right-2 top-0 z-50 hidden translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:translate-y-4 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 md:flex'>
-                        {currentLang === "fr" ?   "Nouvelle Sortie": "New Album" }
+                        {currentLang === 'fr' ? 'Nouvelle Sortie' : 'New Album'}
                      </div>
                      <Image
                         className={
@@ -82,7 +91,7 @@ export default function HeroBanner() {
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
-                           href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t'}>
+                           href={MakingOffYoutube}>
                            Making Off
                         </Link>
                         <Link
@@ -92,10 +101,8 @@ export default function HeroBanner() {
                            target={'_blank'}
                            referrerPolicy={'no-referrer'}
                            title={'Voir le Making off sur youtube'}
-                           href={
-                              'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'
-                           }>
-                           {currentLang === "fr" ?   "Écouter l'Album": "Listen to the Album" }
+                           href={AlbumSpotify}>
+                           {currentLang === 'fr' ? "Écouter l'Album" : 'Listen to the Album'}
                         </Link>
                      </div>
                   </div>
@@ -110,7 +117,7 @@ export default function HeroBanner() {
                         target={'_blank'}
                         referrerPolicy={'no-referrer'}
                         title={'Voir le Making off sur youtube'}
-                        href={'https://www.youtube.com/watch?v=dMrhkQYBRww&t'}>
+                        href={MakingOffYoutube}>
                         Making Off
                      </Link>
                      <Link
@@ -120,10 +127,8 @@ export default function HeroBanner() {
                         target={'_blank'}
                         referrerPolicy={'no-referrer'}
                         title={'Écouter sur Spotify'}
-                        href={
-                           'https://open.spotify.com/album/3ry22siNcsQCSbklOtdTR7?si=H_iRnoajRtOrHoXy0GTN4Q'
-                        }>
-                        {currentLang === "fr" ?   "Écouter l'Album": "Listen to the Album" }
+                        href={AlbumSpotify}>
+                        {currentLang === 'fr' ? "Écouter l'Album" : 'Listen to the Album'}
                      </Link>
                   </div>
                   {/*</Tooltip>*/}
@@ -134,3 +139,6 @@ export default function HeroBanner() {
       </section>
    );
 }
+
+const MakingOffYoutube = 'https://www.youtube.com/watch?v=dMrhkQYBRww&t';
+const AlbumSpotify = 'https://edithpiaf.lnk.to/SymLY';
