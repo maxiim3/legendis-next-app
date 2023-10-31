@@ -22,3 +22,9 @@
 //       return NextResponse.json({error: `Something wrong happened... ${error}`});
 //    }
 // }
+
+import {NextResponse} from 'next/server';
+
+export async function GET() {
+   return NextResponse.redirect('/');
+}
