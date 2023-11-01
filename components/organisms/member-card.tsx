@@ -176,7 +176,7 @@ export default function SectionFounders({className}: ComponentPropsWithoutRef<'s
                      }
                      key={`tab-content-${index}`}>
                      {content}
-                     {tabs[activeTab]?.description[currentLanguage].length - 1 === index ? '' : '.'}
+                     {tabs[activeTab]?.description[currentLanguage].split('. ').length - 1 === index ? '' : '.'}
                   </TabText>
                ))}
                <aside className={'w-full'}>
