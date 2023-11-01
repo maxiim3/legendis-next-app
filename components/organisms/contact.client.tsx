@@ -299,6 +299,7 @@ import {SectionTemplateWrapper} from '@/components/layouts/section-template-wrap
 import Link from 'next/link';
 import React from 'react';
 import {useI18nContext} from '@/stores/i18n.store';
+import Text from '@/components/atoms/text';
 
 export function ContactRedirection() {
    const currentLanguage = useI18nContext(store => store.currentLanguage);
@@ -308,6 +309,10 @@ export function ContactRedirection() {
          slug={'contact'}
          id={'contact'}>
          <Prose className={'mx-auto'}>
+            <Text className={'max-w-[50ch] mx-auto'}>{currentLanguage === 'fr' ?
+               'Pour plus d\'informations, veuillez contacter Samuel Briand : samuel@legendis.fr'
+               : 'For more information, please contact Samuel Briand: samuel@legendis.fr'
+            }</Text>
             <Link
                target='_blank'
                rel='noopener noreferrer'
