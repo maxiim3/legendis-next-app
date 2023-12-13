@@ -15,9 +15,9 @@ export default function HeroBanner() {
 
    return (
       <Section>
-            <LogoHeader />
-            <AlbumEdithPiaf />
-            <CtaButton />
+         <LogoHeader />
+         <AlbumEdithPiaf />
+         <CtaButton />
       </Section>
    );
 }
@@ -27,20 +27,19 @@ const AlbumSpotify = 'https://edithpiaf.lnk.to/SymLY';
 
 /////////////// Component Composition of the page ///////////
 function Section({children}: ComponentPropsWithoutRef<'section'>) {
-    return (
-        //  absolute viewport position
-        <section
-            className={'relative top-0 flex h-screen w-screen flex-col items-center justify-center'}>
-            {/* Inner Modal */}
-            <div
-                className={
-                    'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center border-base-200/40 bg-base-100/60 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
-                
-                }>
-                {children}
-            </div>
-        </section>
-    );
+   return (
+      //  absolute viewport position
+      <section
+         className={'relative top-0 flex h-screen w-screen flex-col items-center justify-center'}>
+         {/* Inner Modal */}
+         <div
+            className={
+               'flex h-auto w-screen max-w-[800px] flex-col items-center justify-center border-base-200/40 bg-base-100/60 py-2 shadow-[0_4px_20px_2px_rgba(0,0,0,0.6)] drop-shadow-xl backdrop-blur  md:gap-2 md:rounded-2xl md:border lg:w-full'
+            }>
+            {children}
+         </div>
+      </section>
+   );
 }
 
 function AlbumEdithPiaf() {
@@ -73,7 +72,7 @@ function AlbumEdithPiaf() {
                />
             }>
             {/*<Tooltip*/}
-            {/*   className={'tooltip-top tooltip-primary relative mx-auto my-8 h-fit w-fit'}*/}
+            {/*   className={'tmoltip-top tooltip-primary relative mx-auto my-8 h-fit w-fit'}*/}
             {/*   message={'Voir le making off sur Youtube'}>*/}
             <div className={'group relative mx-auto my-8 h-fit w-fit'}>
                <div className='badge badge-primary absolute right-2 top-0 z-50 hidden translate-y-0 rotate-0 px-4 py-3 transition group-hover:translate-x-16 group-hover:translate-y-4 group-hover:rotate-12 group-hover:scale-105 group-hover:border-base-100 group-hover:bg-base-100 group-hover:text-base-content group-hover:opacity-40 md:flex'>
