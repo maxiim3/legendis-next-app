@@ -1,0 +1,309 @@
+
+"use client";
+
+import Heading2 from "@/components/atoms/heading-2";
+import {AlbumFactory} from "@/lib/sanity/album";
+import ImageBuilder from "@/lib/sanity/image.builder";
+import {cn} from "@/lib/utils";
+import {motion, useAnimate} from "framer-motion";
+
+import React, {
+    ComponentPropsWithoutRef,
+    Suspense,
+    useEffect,
+    useState,
+} from "react";
+
+export default function CarouselWidget({
+    albums,
+}: {
+    albums: ReturnType<typeof AlbumFactory>[];
+}) {
+    const [currentIdx, setCurrentIdx] = useState<number>(0);
+
+    const handlePreviousItem = () => {
+        if (currentIdx === 0) setCurrentIdx(albums!.length - 1);
+        else setCurrentIdx(currentIdx - 1);
+    };
+    const handleNextItem = () => {
+        if (currentIdx === albums!.length - 1) setCurrentIdx(0);
+        else setCurrentIdx(currentIdx + 1);
+    };
+
+    if (!albums) {
+        return <p>No albumm found...</p>;
+    }
+
+    useEffect(() => {
+
+    console.log("INDEX", currentIdx);
+    }, [currentIdx])
+    return (
+        <ViewPort>
+            <Heading2>Nos Albums : {currentIdx}</Heading2>
+            <Suspense fallback={<p>Fetching albums...</p>}>
+                <AlbumContainer>
+                    <NavigationButton
+                        className={"left-12"}
+                        onClick={handlePreviousItem}>
+                        {"<"} Back
+                    </NavigationButton>
+                    <NavigationButton
+                        className={"right-12"}
+                        onClick={handleNextItem}>
+                        Next {">"}
+                    </NavigationButton>
+                    {albums.map((album, idx:number) => {
+                        return (
+                            <AlbumCard
+                                onClick={() => setCurrentIdx(idx)}
+                                key={album._id}
+                                distance={currentIdx - idx}
+                                album={album}
+                            />
+                        );
+                    })}
+                </AlbumContainer>
+            </Suspense>
+        </ViewPort>
+    );
+}
+
+///////////// ViewPort Screen ////////////////
+function ViewPort({children}: ComponentPropsWithoutRef<"div">) {
+    return <div className='mx-auto h-1/2 w-full'>{children}</div>;
+}
+
+//////////////// Album Container //////////////
+function AlbumContainer({children}: ComponentPropsWithoutRef<"div">) {
+    return (
+        <div className='relative flex h-128 border-4 border-primary w-full items-center justify-center gap-12 p-8'>
+            {children}
+        </div>
+    );
+}
+
+//////////////// NAVIVATION BUTTON ///////////////////
+type NavigationButtonProps = ComponentPropsWithoutRef<"button"> & {};
+
+function NavigationButton({
+    children,
+    className,
+    onClick,
+}: NavigationButtonProps) {
+    return (
+        <button
+            onClick={onClick}
+            className={cn(
+                "btn btn-outline btn-lg absolute top-1/2 z-50",
+                className
+            )}>
+            {children}
+        </button>
+    );
+}
+
+//////////////////// Album Component //////////////////////////
+function AlbumCard({
+    album,
+    distance,
+    onClick,
+}: {
+    album: ReturnType<typeof AlbumFactory>;
+    distance: number;
+    onClick: () => void;
+}) {
+    const [scope, animate] = useAnimate();
+
+    useEffect(() => {
+    console.log("calculate distance - ",album.slug?.current!, distance)
+        animate(
+            scope.current,
+            {scale: distance === 0 
+                ? 1.3 
+                : 1,
+            },
+            {duration: 0.25, ease: "easeOut"}
+        );
+    }, [distance]);
+    // console.log( `${album.slug.current} scale-[${scaleProp} px]`);
+
+    return (
+        <div
+            ref={scope}
+            onClick={onClick}
+            className={cn(
+                "reltive aspect-square w-48 rounded-lg bg-base-100",
+                "flex items-center justify-center text-6xl",
+                "card image-full w-96 bg-base-100 shadow-xl"
+                isCurrent && "border-4 border-primary"
+            )}>
+            <img
+                className='aspect-square object-cover'
+                src={ImageBuilder(album.album_cover).url()}
+            />
+            {/* {album?.title?.fr} */}
+        </div>
+    );
+}
+
+// "use client";
+
+// import Heading2 from "@/components/atoms/heading-2";
+// import {AlbumFactory} from "@/lib/sanity/album";
+// import ImageBuilder from "@/lib/sanity/image.builder";
+// import {getAllAlbums} from "@/lib/sanity/service";
+// import {cn} from "@/lib/utils";
+// import React, {
+//     ComponentPropsWithoutRef,
+//     Suspense,
+//     useDebugValue,
+//     useEffect,
+//     useState,
+// } from "react";
+
+// export default function CarouselWidget() {
+//     const [albums, setAlbums] = useState<
+//         ReturnType<typeof AlbumFactory>[] | null
+//     >(null);
+
+//     const [currentIdx, setCurrentIdx] = useState<number>(0);
+//     const [previousIdx, setPreviousIdx] = useState<number>(0);
+//     const [nextIdx, setNextIdx] = useState<number>(0);
+
+//     useEffect(() => {
+//         getAllAlbums().then(res => {
+//             setAlbums(res);
+//             setPreviousIdx(res.length - 1);
+//             setNextIdx(0 + 1);
+//         });
+//     }, []);
+
+//     const handlePreviousItem = (idx: number) => {
+//         if (idx === 0) return albums!.length - 1;
+//         else return idx - 1;
+//     };
+//     const handleNextItem = (idx: number) => {
+//         if (idx === albums!.length - 1) return 0;
+//         else return idx + 1;
+//     };
+
+//     const slideBackward = () => {
+//         setCurrentIdx(handlePreviousItem);
+//         setPreviousIdx(handlePreviousItem);
+//         setNextIdx(handlePreviousItem);
+//     };
+//     const slideForward = () => {
+//         setCurrentIdx(handleNextItem);
+//         setPreviousIdx(handleNextItem);
+//         setNextIdx(handleNextItem);
+//     };
+
+//     if (!albums) {
+//         return <p>No albumm found...</p>;
+//     }
+
+//     return (
+//         <ViewPort>
+//             <Heading2>Nos Albums</Heading2>
+//             <Suspense fallback={<p>Fetching albums...</p>}>
+//                 <AlbumContainer>
+//                     <NavigationButton
+//                         className={"left-12"}
+//                         handler={slideBackward}>
+//                         {"<"} Back
+//                     </NavigationButton>
+//                     <NavigationButton
+//                         className={"right-12"}
+//                         handler={slideForward}>
+//                         Next {">"}
+//                     </NavigationButton>
+//                     <AlbumCard
+//                         idx={previousIdx}
+//                         album={albums[previousIdx]}
+//                     />
+//                     <AlbumCard
+//                         center
+//                         idx={currentIdx}
+//                         album={albums[currentIdx]}
+//                     />
+//                     <AlbumCard
+//                         idx={nextIdx}
+//                         album={albums[nextIdx]}
+//                     />
+//                 </AlbumContainer>
+//             </Suspense>
+//         </ViewPort>
+//     );
+// }
+
+// ///////////// ViewPort Screen ////////////////
+// function ViewPort({children}: ComponentPropsWithoutRef<"div">) {
+//     return <div className='h-screen w-full'>{children}</div>;
+// }
+
+// //////////////// Album Container //////////////
+// function AlbumContainer({children}: ComponentPropsWithoutRef<"div">) {
+//     return (
+//         <div className='relative flex h-128 w-full items-center justify-center gap-4 p-8'>
+//             {children}
+//         </div>
+//     );
+// }
+
+// //////////////// NAVIVATION BUTTON ///////////////////
+// type NavigationButtonProps = ComponentPropsWithoutRef<"button"> & {
+//     handler: () => void;
+// };
+
+// function NavigationButton({
+//     handler,
+//     children,
+//     className,
+// }: NavigationButtonProps) {
+//     return (
+//         <button
+//             onClick={handler}
+//             className={cn(
+//                 "btn btn-outline btn-lg absolute top-1/2 z-50",
+//                 className
+//             )}>
+//             {children}
+//         </button>
+//     );
+// }
+
+// //////////////////// Album Component //////////////////////////
+// function AlbumCard({
+//     album,
+//     idx,
+//     center = false,
+// }: {
+//     album: ReturnType<typeof AlbumFactory>;
+//     idx: number;
+//     center?: boolean;
+// }) {
+//     const debut = useDebugValue(album.title);
+//     console.log(debut);
+
+//     return (
+//         <div
+//             key={idx}
+//             className={cn(
+//                 "reltive aspect-square w-48 rounded-lg bg-base-100",
+//                 center
+//                     ? "z-40 scale-125 shadow-xl shadow-base-200"
+//                     : "z-30 shadow-[0_8px_10px_#333333] blur-sm grayscale",
+//                 "flex items-center justify-center text-6xl",
+//                 "card image-full w-96 bg-base-100 shadow-xl"
+//             )}>
+//             <div className='absolute left-0 top-0 w-full overflow-hidden'>
+//                 <img
+//                     className='aspect-square object-cover'
+//                     src={ImageBuilder(album.album_cover).url()}
+//                 />
+//             </div>
+//             {album?.title?.fr}
+//         </div>
+//     );
+// }

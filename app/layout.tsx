@@ -17,9 +17,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             lang='en'>
             <body
                 className={`relative ${roboto.className} ${italianno.className} ${tangerine.className}`}>
-                <Header />
-                {children}
-                <Footer />
+                    <Header />
+                    {children}
+                    <Footer />
             </body>
         </html>
     );

@@ -292,36 +292,35 @@
 //       {label}
 //    </label>
 // );
-'use client'
+"use client";
 
-import Prose from '@/components/atoms/Prose';
-import {SectionTemplateWrapper} from '@/components/layouts/section-template-wrapper.client';
-import Link from 'next/link';
-import React from 'react';
-import {useI18nContext} from '@/stores/i18n.store';
-import Text from '@/components/atoms/text';
+import Prose from "@/components/atoms/Prose";
+import {SectionTemplateWrapper} from "@/components/layouts/section-template-wrapper.client";
+import {useI18nContext} from "@/stores/i18n.store";
+import Link from "next/link";
+import React from "react";
 
 export function ContactRedirection() {
-   const currentLanguage = useI18nContext(store => store.currentLanguage);
-   return (
-      <SectionTemplateWrapper
-         className={'mb-12 rounded-b-xl pb-24'}
-         slug={'contact'}
-         id={'contact'}>
-         <Prose className={'mx-auto'}>
-            {/*<Text className={'max-w-[50ch] mx-auto'}>{currentLanguage === 'fr' ?*/}
-            {/*   'Pour plus d\'informations, veuillez contacter Samuel Briand : samuel@legendis.fr'*/}
-            {/*   : 'For more information, please contact Samuel Briand: samuel@legendis.fr'*/}
-            {/*}</Text>*/}
-            <Link
-               target='_blank'
-               rel='noopener noreferrer'
-               type={'external'}
-               href={'https://prod203.com/contact'}
-               className={'btn btn-primary'}>
-               {currentLanguage=== 'fr' ? 'Nous contacter' : 'Contact us'}
-            </Link>
-         </Prose>
-      </SectionTemplateWrapper>
-   );
+    const currentLanguage = useI18nContext(store => store.currentLanguage);
+    return (
+        <SectionTemplateWrapper
+            className={"mb-12 rounded-b-xl pb-24"}
+            slug={"contact"}
+            id={"contact"}>
+            <Prose className={"mx-auto"}>
+                {/*<Text className={'max-w-[50ch] mx-auto'}>{currentLanguage === 'fr' ?*/}
+                {/*   'Pour plus d\'informations, veuillez contacter Samuel Briand : samuel@legendis.fr'*/}
+                {/*   : 'For more information, please contact Samuel Briand: samuel@legendis.fr'*/}
+                {/*}</Text>*/}
+                <Link
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    type={"external"}
+                    href={"https://prod203.com/contact"}
+                    className={"btn btn-primary"}>
+                    {currentLanguage === "fr" ? "Nous contacter" : "Contact us"}
+                </Link>
+            </Prose>
+        </SectionTemplateWrapper>
+    );
 }

@@ -39,8 +39,7 @@ export default function Presentation() {
                      <AccordionContent>
                         <Text>{content.get(currentLanguage)}</Text>
                      </AccordionContent>
-                  </AccordionItem>
-               ))}
+                  </AccordionItem>))}
             </Accordion>
          </Prose>
       </SectionTemplateWrapper>
