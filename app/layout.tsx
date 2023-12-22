@@ -1,10 +1,10 @@
 import Footer from '@/components/organisms/footer.client';
-import Header from '@/components/organisms/header';
 import { italianno,roboto,tangerine } from '@/styles/fonts';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import './globals.css';
+import Header from '@/app/header';
 
 export const metadata: Metadata = {
    title: 'Legendis',
