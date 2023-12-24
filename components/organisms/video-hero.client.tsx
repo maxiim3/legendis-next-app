@@ -39,19 +39,11 @@ export default function VideoHero() {
             }}
             aria-label={'Video hero banner'}
             className={cn(
-               'absolute top-0 mx-auto h-screen w-screen overflow-hidden'
-               // 'lg:aspect-video lg:h-auto '
+               'relative top-0 mx-auto h-screen w-screen overflow-hidden'
             )}>
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Suspense>
-               {/*<VideoPlayer />*/}
-               <Image
-                  src={'/assets/orchestra02.webp'}
-                  sizes={''}
-                  className={'object-cover object-center mask mask-square'}
-                  fill={true}
-                  alt={''}
-               />
+               <VideoPlayer />
             </Suspense>
          </motion.section>
       </>
@@ -67,10 +59,10 @@ export function VideoPlayer() {
    const CLOUDINARY_ENV = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
    const VIDEO_SOURCE: VideoSource = Object.freeze({
-      LOW: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_SD.webp`,
-      MEDIUM: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_HD.webm`,
-      HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_FHD.webm`,
-      VERY_HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_UHD.webm`,
+      LOW: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1703339189/legendis/230831_CAPSULE_WEB_LEGENDIS_SD.webp`,
+      MEDIUM: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1703339189/legendis/230831_CAPSULE_WEB_LEGENDIS_HD.webm`,
+      HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1703339189/legendis/230831_CAPSULE_WEB_LEGENDIS_FHD.webm`,
+      VERY_HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1703339189/legendis/230831_CAPSULE_WEB_LEGENDIS_UHD.webm`,
    });
    const videoRef = useRef<HTMLVideoElement | null>(null);
    const playerRef = useRef<CloudinaryVideoPlayer | null>(null);
@@ -88,7 +80,7 @@ export function VideoPlayer() {
       setVideoSource();
       if (!isVideoLoaded) {
          setIsVideoLoaded();
-      }
+        }
 
       if (problematicAddedElement) {
          problematicAddedElement.style.paddingTop = '0px !important';
@@ -103,19 +95,19 @@ export function VideoPlayer() {
    ]);
 
    /*Handle Load Failed on no internet : Display an image placeholder instead of the video*/
-   // if (!componentMounted) {
-   //    return (
-   //       <div
-   //          className={
-   //             'flex h-full w-full animate-pulse flex-col items-center justify-center bg-base-100/70'
-   //          }>
-   //          <Text className={'space-x-3'}>
-   //             <span className='loading loading-spinner loading-lg text-primary' />
-   //             Legendis
-   //          </Text>
-   //       </div>
-   //    );
-   // }
+   if (!componentMounted) {
+      return (
+         <div
+            className={
+               'flex h-full w-full animate-pulse flex-col items-center justify-center bg-base-100/70'
+            }>
+            {/* <Text className={'space-x-3'}> */}
+               <span className='loading loading-spinner loading-lg text-primary' />
+               Legendis
+            {/* </Text> */}
+         </div>
+      );
+   }
    return (
       <motion.div
          initial={{opacity: 0}}

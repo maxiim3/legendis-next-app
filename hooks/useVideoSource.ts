@@ -90,6 +90,7 @@ export function useVideoSource(
          newSrc = getSourceByWidth(width, source)
       }
 
+    console.log("useVideoSource | getSourceByWidth ", newSrc)
       // Apply the new source to the video element
       if (videoElement) {
          videoElement.style.width = '100vw'

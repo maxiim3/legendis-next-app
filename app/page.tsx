@@ -3,24 +3,28 @@ import HeroBanner from "@/components/organisms/hero-banner"
 import Members from "@/components/organisms/members.client"
 import Presentation from "@/components/organisms/presentation.client"
 import React from "react"
+import CarouselWidget from "./carousel-widget.client"
+import { AlbumFactory } from "@/lib/sanity/album"
+import { getAllAlbums } from "@/lib/sanity/service"
+import VideoHero from "@/components/organisms/video-hero.client"
 
-export default function HomePage() {
+const LazyPresentation = React.lazy(() => import("@/components/organisms/presentation.client"))
+
+
+export default async function HomePage() {
+        const albums: Awaited<ReturnType<typeof AlbumFactory>[]> = await getAllAlbums();
 	return (
 		<main
 			className={
 				"h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden bg-transparent font-roboto text-balance "
 			}>
-			{/*<VideoHero />*/}
-			<HeroBanner />
+			<HeroBanner albums={albums} />
 			<div>
-				<Presentation />
+				<LazyPresentation />
 				<Members />
-				{/*  <Prose className={'mx-auto text-center pb-16 '}>
-                  <Heading2>Contact</Heading2>
-               </Prose>*/}
-				<ContactRedirection />/
+				<ContactRedirection />
+                {/* <CarouselWidget albums={albums}/> */}
 			</div>
-			{/*<SpotifyGrid />*/}
 		</main>
 	)
 }
