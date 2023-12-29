@@ -10,6 +10,33 @@ import SanityImageBuilder from '@/page-section/hero-section/albums/sanity-image-
 import {useAnimate} from 'framer-motion';
 import React, {ComponentPropsWithoutRef, Suspense, useEffect, useState} from 'react';
 
+/**
+useCarouselWidget is a custom hook that handles the state and interactions for a carousel widget.
+
+It takes in an array of albums and returns:
+
+- currentIdx - the index of the currently centered album
+- setCurrentIdx - function to update currentIdx
+- handlePreviousItem - handler to move to previous album
+- handleNextItem - handler to move to next album
+- calculateDistance - calculates distance of an album from the currentIdx
+
+currentIdx is initialized to 0.
+
+handlePreviousItem moves currentIdx to the previous album index, looping to end if at 0.
+
+handleNextItem moves currentIdx to the next album index, looping to start if at end.
+
+calculateDistance determines the distance from currentIdx:
+- Positive if album index is ahead of current
+- Negative if album index is behind current
+- Adjusted so current album distance is always 1
+
+This allows computing visual positions based on distance.
+
+The hook manages all state and interactions for a carousel.
+**/
+
 function useCarouselWidget(albums: OT_Album[]) {
    const [currentIdx, setCurrentIdx] = useState<number>(0);
 
@@ -135,11 +162,41 @@ namespace Utils {
       return `${(window.innerWidth / 10) * distance * -1}px`;
    }
 }
-//would have a distance of one
-/////////////////////// CARD custom Hook ////////////////
+
+/**
+ useCalculatePosition is a custom hook that calculates the position of a card
+ based on its distance from the current image.
+
+ It takes in distance as a parameter, which is used to determine the scale,
+ zIndex, filter, and translateX values of the card.
+
+ It uses the Utils namespace to calculate these values:
+
+ - isCurrentImage checks if the distance is 1, meaning it's the current image
+ - calculateScale returns lower scales the further the distance
+ - calculateZIndex returns lower zIndexes the further the distance
+ - calculateFilter returns stronger blur/grayscale the further the distance
+ - calculateXPos calculates translateX position based on distance
+
+ The hook uses useAnimate from Framer Motion to animate the card on change.
+
+ It applies these animated values to the card element ref passed in scope.
+
+ The useEffect hook runs on distance change and animates the scale, zIndex,
+ filter, and translateX values over 0.25s easeOut.
+
+ The hook returns the scope ref to apply the animated values to the card element.
+ **/
 function useCalculatePosition(distance: number) {
    ////// Framer motion
    const [scope, animate] = useAnimate();
+
+   const isCurrent = Utils.isCurrentImage(distance);
+
+   const scale = isCurrent ? 1.3 : Utils.calculateScale(distance);
+   const zIndex = isCurrent ? 800 : Utils.calculateZIndex(distance, 800);
+   const filter = isCurrent ? 0 : Utils.calculateFilter(distance);
+   const translateX = isCurrent ? 0 : Utils.calculateXPos(distance);
 
    //// calculate position on X (logarithmic)
 
@@ -147,14 +204,16 @@ function useCalculatePosition(distance: number) {
       animate(
          scope.current,
          {
-            scale: Utils.isCurrentImage(distance) ? 1.3 : Utils.calculateScale(distance),
-            zIndex: Utils.isCurrentImage(distance) ? 800 : Utils.calculateZIndex(distance, 800),
-            filter: Utils.isCurrentImage(distance) ? 0 : Utils.calculateFilter(distance),
-            translateX: Utils.isCurrentImage(distance) ? 0 : Utils.calculateXPos(distance),
+            scale,
+            zIndex,
+            filter,
+            translateX,
          },
          {duration: 0.25, ease: 'easeOut'}
       );
-   }, [distance]);
+
+      return () => {};
+   }, [animate, distance, filter, scale, scope, translateX, zIndex]);
 
    return scope;
 }
