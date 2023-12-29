@@ -6,13 +6,15 @@ import React,{ useEffect } from 'react';
  * This function should be called in your component to actually apply the changes to the video element.
  */
 export function useClientWindowWidth() {
-   const [width, setWidth] = React.useState<number>((window && window.innerWidth) || 0);
+   const [width, setWidth] = React.useState<number>(0);
 
    useEffect(() => {
       function updateWindowWidth() {
          setWidth(window.innerWidth);
          console.log('width', width);
       }
+
+    if(!window) return
 
       updateWindowWidth();
       window.addEventListener('resize', updateWindowWidth);
