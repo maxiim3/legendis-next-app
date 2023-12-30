@@ -1,11 +1,11 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { AlbumFactory } from '@/page-section/hero-section/albums/album.factory';
-import { MultiLanguageContentFactory } from '@/shared/i18n/MultiLanguageContentFactory';
-import { useAppLanguage } from '@/shared/i18n/useAppLanguage';
+import {cn} from '@/lib/utils';
+import {AlbumFactory} from '@/page-section/hero-section/albums/album.factory';
+import {MultiLanguageContentFactory} from '@/shared/i18n/MultiLanguageContentFactory';
+import {useAppLanguage} from '@/shared/i18n/useAppLanguage';
 import React, {ComponentPropsWithoutRef} from 'react';
-import { Buttons } from './components/buttons';
+import {ButtonLink} from './components/buttons';
 
 export namespace Containers {
    export function CardSlot({children, className}: ComponentPropsWithoutRef<'div'>) {
@@ -51,7 +51,7 @@ export default function HeroSection({albums}: {albums: ReturnType<typeof AlbumFa
                {/* <NewAlbumWidget albums={albums} /> */}
                {/*<CarouselWidget albums={albums} />*/}
             </div>
-            <Buttons.ScrollToPresentation />
+            <ButtonLink />
          </Containers.CardSlot>
       </Containers.ScreenRoot>
    );
