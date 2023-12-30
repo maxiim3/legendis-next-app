@@ -30,7 +30,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                {/*    className={'object-cover size-full md:object-cover object-center'} */}
                {/*    alt={''} */}
                {/* /> */}
-               <VideoPlayer />
+               {/* <VideoPlayer /> */}
             </figure>
             {children}
             <Footer />

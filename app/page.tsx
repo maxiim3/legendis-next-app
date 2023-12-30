@@ -23,14 +23,14 @@ export default async function Page() {
    return (
       <main
          className={
-            'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden bg-transparent font-roboto text-balance '
+            'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden text-balance bg-transparent font-roboto '
          }>
          <HeroSection albums={albums} />
-         <div>
-            <LegendisPresentation />
-            <Members />
-            <ContactRedirection />
-         </div>
+         {/* <div> */}
+         {/*    <LegendisPresentation /> */}
+         {/*    <Members /> */}
+         {/*    <ContactRedirection /> */}
+         {/* </div> */}
       </main>
    );
 }

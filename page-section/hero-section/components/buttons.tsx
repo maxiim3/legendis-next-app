@@ -1,9 +1,8 @@
 import {useNavigationStore} from '@/shared/globalNavigation/navigation.store';
 import React from 'react';
 
-export namespace Buttons {
    export function ScrollToPresentation() {
-      const {id: presentationId} = useNavigationStore(store => store.sections.presentation);
+//      const {id: presentationId} = useNavigationStore(store => store.sections.presentation);
       return (
          <a
             className={'animate-bounce rounded-lg bg-base-100/10 transition hover:bg-base-100/60'}
@@ -23,5 +22,4 @@ export namespace Buttons {
             </svg>
          </a>
       );
-   }
 }
