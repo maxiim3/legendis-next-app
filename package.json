@@ -10,6 +10,7 @@
    },
    "dependencies": {
       "@hookform/resolvers": "^3.3.2",
+      "@lit/react": "^1.0.2",
       "@radix-ui/react-accordion": "^1.1.2",
       "@radix-ui/react-aspect-ratio": "^1.0.3",
       "@radix-ui/react-avatar": "^1.0.4",
@@ -32,6 +33,7 @@
       "embla-carousel-react": "^8.0.0-rc17",
       "framer-motion": "^10.16.4",
       "ky": "^1.1.2",
+      "lit": "^3.1.0",
       "lucide-react": "^0.291.0",
       "next": "14.0.1",
       "next-cloudinary": "^5.0.0",
