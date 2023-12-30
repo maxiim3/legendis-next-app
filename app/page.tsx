@@ -26,11 +26,11 @@ export default async function Page() {
             'h-min-screen relative mx-auto flex w-screen flex-col items-center justify-center overflow-x-hidden text-balance bg-transparent font-roboto '
          }>
          <HeroSection albums={albums} />
-         {/* <div> */}
-         {/*    <LegendisPresentation /> */}
-         {/*    <Members /> */}
-         {/*    <ContactRedirection /> */}
-         {/* </div> */}
+         <div>
+            <LegendisPresentation />
+            {/* <Members /> */}
+            <ContactRedirection />
+         </div>
       </main>
    );
 }

@@ -7,7 +7,7 @@ import {useAppLanguage} from '@/shared/i18n/useAppLanguage';
 import React, {ComponentPropsWithoutRef} from 'react';
 import {ButtonLink} from './components/buttons';
 
-export namespace Containers {
+export namespace Private {
    export function CardSlot({children, className}: ComponentPropsWithoutRef<'div'>) {
       return (
          <div
@@ -35,8 +35,8 @@ export default function HeroSection({albums}: {albums: ReturnType<typeof AlbumFa
    const {subtitle} = useSectionData();
 
    return (
-      <Containers.ScreenRoot>
-         <Containers.CardSlot className='rounded-card'>
+      <Private.ScreenRoot>
+         <Private.CardSlot className='rounded-card'>
             {/* <TextBlock> */}
             {/*    <h1 className={'sr-only text-center text-xl font-light uppercase text-primary'}> */}
             {/*       Legendis */}
@@ -52,8 +52,8 @@ export default function HeroSection({albums}: {albums: ReturnType<typeof AlbumFa
                {/*<CarouselWidget albums={albums} />*/}
             </div>
             <ButtonLink />
-         </Containers.CardSlot>
-      </Containers.ScreenRoot>
+         </Private.CardSlot>
+      </Private.ScreenRoot>
    );
 }
 

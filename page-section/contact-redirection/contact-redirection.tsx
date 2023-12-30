@@ -1,6 +1,6 @@
 'use client';
 
-import {SectionTemplateWrapper} from '@/page-section/section-template';
+import {SectionTemplate} from '@/page-section/section-template';
 import TextBlock from '@/components/atoms/text-block';
 import {MultiLanguageContentFactory} from '@/shared/i18n/MultiLanguageContentFactory';
 import {useAppLanguage} from '@/shared/i18n/useAppLanguage';
@@ -23,9 +23,9 @@ export function ContactRedirection() {
    const {buttonLabel} = useSectionData();
 
    return (
-      <SectionTemplateWrapper
+      <SectionTemplate
          className={'mb-12 rounded-b-xl pb-24'}
-         slug={'contact'}
+//         slug={'contact'}
          id={'contact'}>
          <TextBlock className={'mx-auto'}>
             <Link
@@ -38,6 +38,6 @@ export function ContactRedirection() {
                {buttonLabel}
             </Link>
          </TextBlock>
-      </SectionTemplateWrapper>
+      </SectionTemplate>
    );
 }

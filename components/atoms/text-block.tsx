@@ -9,7 +9,7 @@ export default function TextBlock({
    return (
       <article
          className={cn(
-            'prose mx-auto text-center text-primary text-balance selection:bg-secondary/80 selection:text-secondary-content ',
+            'prose mx-auto text-balance text-center text-primary selection:bg-secondary/80 selection:text-secondary-content ',
             className
          )}
          {...props}>
