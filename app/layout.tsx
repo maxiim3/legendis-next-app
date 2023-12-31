@@ -1,9 +1,7 @@
 import Footer from '@/app/footer';
 import Header from '@/app/header';
-import VideoPlayer from '@/page-section/fixed-video/video-player';
-import { italianno,roboto,tangerine } from '@/shared/fonts';
-import { Video } from 'lucide-react';
-import type { Metadata } from 'next';
+import {italianno, roboto, tangerine} from '@/shared/fonts';
+import type {Metadata} from 'next';
 import React from 'react';
 import './globals.css';
 

@@ -25,7 +25,7 @@ export function ContactRedirection() {
    return (
       <SectionTemplate
          className={'mb-12 rounded-b-xl pb-24'}
-//         slug={'contact'}
+         slug={'contact'}
          id={'contact'}>
          <TextBlock className={'mx-auto'}>
             <Link

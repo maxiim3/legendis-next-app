@@ -1,7 +1,7 @@
 import sanityClient from '@/lib/singleton-sanity-client';
-import {ContactRedirection} from '@/page-section/contact-redirection/contact-redirection';
-import {AlbumFactory} from '@/page-section/hero-section/albums/album.factory';
-import {OT_AlbumFromSanity} from '@/page-section/hero-section/albums/album.types';
+import { ContactRedirection } from '@/page-section/contact-redirection/contact-redirection';
+import { AlbumFactory } from '@/page-section/hero-section/albums/album.factory';
+import { OT_AlbumFromSanity } from '@/page-section/hero-section/albums/album.types';
 import HeroSection from '@/page-section/hero-section/hero-section';
 import Members from '@/page-section/members-presentation/members';
 import React from 'react';
