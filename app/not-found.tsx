@@ -1,5 +1,5 @@
-import Footer from '@/app/footer';
-import Header from '@/app/header';
+import Footer from '@/app/footer-component/footer';
+import Header from '@/app/header-component/header';
 import {italianno, roboto, tangerine} from '@/shared/fonts';
 import type {Metadata} from 'next';
 import React from 'react';

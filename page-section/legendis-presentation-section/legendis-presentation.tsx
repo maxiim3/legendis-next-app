@@ -2,9 +2,8 @@
 
 import {SectionTemplate} from '@/page-section/section-template';
 import Heading2 from '@/components/atoms/heading-2';
-import Text from '@/components/atoms/text';
 import TextBlock from '@/components/atoms/text-block';
-
+import Text from "@/components/atoms/text"
 import {
    Accordion,
    AccordionContent,

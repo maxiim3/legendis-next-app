@@ -1,6 +1,7 @@
 import {colors as customColors} from '@/shared/colors';
 import {createGlobalTheme} from '@vanilla-extract/css';
 import twColors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const vars = createGlobalTheme(':root', {
    color: {
@@ -36,3 +37,9 @@ export const vars = createGlobalTheme(':root', {
       error: customColors.danger['400'],
    },
 });
+
+export const screens = {
+   xs: '475px',
+   ...defaultTheme.screens,
+   '2xl': '1400px',
+};
