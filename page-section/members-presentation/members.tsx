@@ -30,7 +30,7 @@ export default function Members() {
 
    return (
       <SectionTemplate
-         //         slug={sectionSlug}
+         slug={sectionSlug}
          id={teamId}>
          <TextBlock className={'mx-auto pb-16 text-center '}>
             <Heading2>{sectionTitle}</Heading2>

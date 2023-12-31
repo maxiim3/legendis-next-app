@@ -1,14 +1,12 @@
-'use client';
-
 import DigitalSolutionStudioLogo from '@/components/atoms/DSS-logo';
 import Legendis from '@/components/atoms/Legendis';
 import Text from '@/components/atoms/text';
-import {MultiLanguageContentFactory} from '@/shared/i18n/MultiLanguageContentFactory';
-import {useAppLanguage} from '@/shared/i18n/useAppLanguage';
 import {cn} from '@/lib/utils';
+import {MultiLanguageContentFactory} from '@/shared/i18n/MultiLanguageContentFactory';
 import {ExternalLink, Github} from 'lucide-react';
 import Link from 'next/link';
 import React, {ComponentPropsWithoutRef} from 'react';
+import {section} from './footer.css';
 
 export default function Footer() {
    const {links, legals} = useFooterData();
@@ -19,24 +17,24 @@ export default function Footer() {
                <Legendis className={'h-12 w-12 fill-primary'} />
             </div>
             <div className='grid grid-cols-1 gap-8 border-t border-primary/80 pt-8 sm:grid-cols-2 lg:pt-16'>
-               <Foo.Group>
+               <section className={section}>
                   <Foo.Title className={'mb-3'}>Links</Foo.Title>
                   <Foo.Item href={links.prod203.link}>
                      <ExternalLink className={'w-4 opacity-50'} />
                      {links.prod203.label}
                   </Foo.Item>
-               </Foo.Group>
-               <Foo.Group>
-                  <Foo.Title>Design & Developpement</Foo.Title>
-                  <Foo.Item href={links.github.link}>
-                     <Github className={'w-4'} />
-                     {links.github.label}
-                  </Foo.Item>
-                  <Foo.Item href={links.dss.link}>
-                     <DigitalSolutionStudioLogo className={'h-6 w-6 fill-neutral-50 opacity-70'} />
-                     {links.dss.label}
-                  </Foo.Item>
-               </Foo.Group>
+               </section>
+               {/*                <section className={section}> */}
+               <Foo.Title>Design & Developpement</Foo.Title>
+               <Foo.Item href={links.github.link}>
+                  <Github className={'w-4'} />
+                  {links.github.label}
+               </Foo.Item>
+               <Foo.Item href={links.dss.link}>
+                  <DigitalSolutionStudioLogo className={'h-6 w-6 fill-neutral-50 opacity-70'} />
+                  {links.dss.label}
+               </Foo.Item>
+               {/*                </section> */}
                <Text className='text-xs text-primary/70'>{legals}</Text>
             </div>
          </div>
@@ -45,7 +43,8 @@ export default function Footer() {
 }
 
 function useFooterData() {
-   const currentLanguage = useAppLanguage(store => store.currentLanguage);
+   //   const currentLanguage = useAppLanguage(store => store.currentLanguage);
+   const currentLanguage = 'fr';
 
    const linkToProd203 = MultiLanguageContentFactory.create({
       fr: 'Our site Jamais203 Productions',
@@ -102,14 +101,14 @@ namespace Foo {
       );
    }
 
-   export function Group({children, className}: ComponentPropsWithoutRef<'section'>) {
-      return (
-         <section className={cn('w-41 flex flex-col items-start text-left', className)}>
-            {children}
-         </section>
-      );
-   }
-
+   //   export function Group({children, className}: ComponentPropsWithoutRef<'section'>) {
+   //      return (
+   //         <section className={cn('w-41 flex flex-col items-start text-left', className)}>
+   //            {children}
+   //         </section>
+   //      );
+   //   }
+   //
    export function Title({children, className}: ComponentPropsWithoutRef<'h3'>) {
       return (
          <h3
