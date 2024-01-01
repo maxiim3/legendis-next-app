@@ -1,5 +1,5 @@
-import {vars} from '@/app/theme.css';
-import {keyframes, style} from '@vanilla-extract/css';
+import { vars } from '@/app/theme.css';
+import { keyframes,style } from '@vanilla-extract/css';
 
 const sharedPosition = style({
    position: 'fixed',
@@ -7,8 +7,12 @@ const sharedPosition = style({
    right: 16,
 });
 const buttonSize = style({
-   width: '10ch',
+   width: 'clamp(6ch, 11vw, 100px)',
    aspectRatio: '1/1',
+
+   //   '@media' : {
+   //      [`screen and (min-width:${screens.})`]
+   //   }
 });
 
 const fullScreen = style({
@@ -88,7 +92,7 @@ const closeMenu = keyframes({
       bottom: 12,
       right: 16,
       borderRadius: '100%',
-      width: '10ch',
+      width: 'clamp(6ch, 11vw, 100px)',
       aspectRatio: '1/1',
    },
 });
