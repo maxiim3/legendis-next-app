@@ -1,5 +1,6 @@
 import Footer from '@/app/footer-component/footer';
 import Header from '@/app/header-component/header';
+import {LanguageCtxProvider} from '@/app/language-ctx/language-ctx-provider';
 import {BackgroundVideo} from '@/page-section/fixed-video/video-component';
 import {italianno, roboto, tangerine} from '@/shared/fonts';
 import type {Metadata} from 'next';
@@ -20,10 +21,12 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
          lang='en'>
          <body
             className={`${body} ${roboto.className} ${italianno.className} ${tangerine.className}`}>
-            <Header />
-            <BackgroundVideo />
-            {children}
-            <Footer />
+            <LanguageCtxProvider>
+               <Header />
+               <BackgroundVideo />
+               {children}
+               <Footer />
+            </LanguageCtxProvider>
          </body>
       </html>
    );

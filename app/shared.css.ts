@@ -1,4 +1,4 @@
-import {style} from '@vanilla-extract/css';
+import { keyframes,style } from '@vanilla-extract/css';
 
 export const srOnly = style({
    position: 'absolute',
@@ -10,4 +10,14 @@ export const srOnly = style({
    clip: 'rect(0, 0, 0, 0)',
    whiteSpace: 'nowrap',
    borderWidth: 0,
+});
+export const revealFromBottom = keyframes({
+   from: {
+      opacity: 0,
+      transform: 'translateY(8px)',
+   },
+   to: {
+      opacity: 1,
+      transform: 'translateY(0)',
+   },
 });
