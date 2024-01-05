@@ -4,7 +4,7 @@ import {cn} from '@/lib/utils';
 type DSSProps = ComponentPropsWithoutRef<'svg'> & {
    withText?: boolean;
 };
-export default function DSS({withText = false, ...props}: DSSProps) {
+export default function DigitalSolutionStudioLogo({withText = false, ...props}: DSSProps) {
    return (
       <svg
          width='402'

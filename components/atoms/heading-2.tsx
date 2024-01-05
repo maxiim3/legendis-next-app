@@ -1,12 +1,14 @@
+import {textHeading2} from '@/components/atoms/text-heading2.css';
 import {cn} from '@/lib/utils';
-import {ComponentPropsWithoutRef} from 'react';
+import React, {ComponentPropsWithoutRef} from 'react';
 
 export default function Heading2({children, className, ...props}: ComponentPropsWithoutRef<'h2'>) {
    return (
       <h2
-         className={cn('font-roboto text-3xl font-normal uppercase sm:text-4xl text-primary', className)}
+         className={cn(textHeading2, className)}
          {...props}>
          {children}
       </h2>
    );
 }
+

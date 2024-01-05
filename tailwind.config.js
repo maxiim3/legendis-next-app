@@ -1,15 +1,10 @@
 import twColors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
-import {colors as customColors} from './styles/colors';
-/** @type {import('tailwindcss').Config} */
+import { colors as customColors } from './shared/colors';
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-   content: [
-      './pages/**/*.{ts,tsx}',
-      './components/**/*.{ts,tsx}',
-      './app/**/*.{ts,tsx}',
-      './src/**/*.{ts,tsx}',
-   ],
+   content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './page-section/**/*.{ts,tsx}'],
    darkMode: ['class'],
    theme: {
       container: {

@@ -1,10 +1,14 @@
-import Footer from '@/components/organisms/footer.client';
-import Header from '@/components/organisms/header';
-import { italianno,roboto,tangerine } from '@/styles/fonts';
-import type { Metadata } from 'next';
-import Image from 'next/image';
+import {LanguageCtxProvider} from '@/app/language-ctx/language-ctx-provider';
+import {loader, loaderLogo} from '@/app/loader.css';
+import {PageSectionCtxProvider} from '@/app/page-navigation-ctx/page-navigation-ctx';
+import Legendis from '@/components/atoms/Legendis';
+import {LegendisLogo} from '@/components/organisms/legendis-logo';
+import {italianno, roboto, tangerine} from '@/shared/fonts';
+import type {Metadata} from 'next';
 import React from 'react';
 import './globals.css';
+import {body} from './layout.css';
+import './theme.css';
 
 export const metadata: Metadata = {
    title: 'Legendis',
@@ -17,23 +21,15 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
          data-theme={'legendisTheme'}
          lang='en'>
          <body
-            className={`relative ${roboto.className} ${italianno.className} ${tangerine.className}`}>
-            <div className={'fixed left-0 top-0 h-screen w-screen '}>
-               <Image
-                  src={'/assets/orchestra02.webp'}
-                  fill
-                  sizes={'100vw'}
-                  objectFit={'cover'}
-                  layout={'fill'}
-                  quality={100}
-                  className={'blur-[2px]'}
-                  alt={'Legendis Orchestra'}
-               />
-            </div>
-            <Header />
-
-            {children}
-            <Footer />
+            className={`${body} ${roboto.className} ${italianno.className} ${tangerine.className}`}>
+         <div className={loader}>
+            <Legendis className={loaderLogo}/>
+         </div>
+            <LanguageCtxProvider>
+               <PageSectionCtxProvider>
+                  {children}
+               </PageSectionCtxProvider>
+            </LanguageCtxProvider>
          </body>
       </html>
    );
