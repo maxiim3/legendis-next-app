@@ -3,9 +3,9 @@
 import {useMenuCtx} from '@/app/header-component/menu-ctx/use-menu-ctx';
 import {
    animateMenuClosed,
+   animateOpenMenu,
    button,
    buttonState,
-   animateOpenMenu,
    fxContainerCircle,
    fxContainerFullScreen,
 } from '@/app/header-component/menu-trigger.css';
@@ -23,7 +23,7 @@ export function MenuTrigger() {
 
          <button
             className={cn(button, isVisible ? buttonState.menuOpen : buttonState.menuClose)}
-            onClick={toggleMenu}>
+            onClick={() => toggleMenu()}>
             {isVisible ? 'X' : 'Menu'}
          </button>
       </>

@@ -16,16 +16,17 @@ import {Switch} from '@/components/ui/switch';
 import {cn} from '@/lib/utils';
 import {AvailableLanguages, MultiLanguageContent} from '@/shared/i18n/i18n.types';
 import React from 'react';
+import {createPortal} from 'react-dom';
 
 export function NavigationMenu() {
    const {isVisible} = useMenuCtx();
 
-   return isVisible && <MenuModal />;
+   return isVisible && createPortal(<MenuModal />, document.body);
 }
 
 export const navigationData: MultiLanguageContent.Type[] = [
    {fr: "L'équipe", en: 'Team'},
-   {fr: "présentation", en: 'presentation'},
+   {fr: 'présentation', en: 'presentation'},
    {
       fr: 'Compositeurs',
       en: 'Compositors',

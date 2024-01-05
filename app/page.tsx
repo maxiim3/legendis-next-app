@@ -36,16 +36,12 @@ export default async function Page() {
             <section className={screenStack}>
                <article className={cardContainer}>
                   <LegendisLogo />
-                  <MultiLangText text={{fr: 'Découvrez nos albums', en: 'Our Albums'}} />
-                  <ButtonLink />
+                  <ButtonLink>
+                     <MultiLangText text={{fr: 'Découvrez nos albums', en: 'Our Albums'}} />
+                  </ButtonLink>
                </article>
             </section>
             <div className={offsetScreen}>
-               <SectionInViewObserver
-                  id={'albums'}
-                  slug={'albums'}>
-                  <CarouselWidget albums={albums} />
-               </SectionInViewObserver>
                <SectionInViewObserver
                   slug={'presentation'}
                   className={'mt-4  flex flex-col  items-center rounded-t-xl p-2 px-1 sm:px-3'}
@@ -55,6 +51,11 @@ export default async function Page() {
                      <MultiLangText text={PageData.welcome} />
                   </TextBlock>
                   <AccordionWidget />
+               </SectionInViewObserver>
+               <SectionInViewObserver
+                  id={'albums'}
+                  slug={'albums'}>
+                  <CarouselWidget albums={albums} />
                </SectionInViewObserver>
 
                {/* <Members /> */}

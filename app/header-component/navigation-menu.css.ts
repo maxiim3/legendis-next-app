@@ -5,35 +5,35 @@ import {keyframes, style} from '@vanilla-extract/css';
 export const navContainer = {
    base: style({
       maxHeight: 1200,
+      width: '100vw',
       transition: 'all 200ms 200ms',
+      position: 'fixed',
+      top: '0%',
+      zIndex: 990,
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      marginInline: 'auto',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 16,
+      opacity: 1,
+      '@media': {
+         [`screen and (min-width:${screens.sm})`]: {
+            gap: 24,
+         },
+         [`screen and (min-width:${screens.md})`]: {
+            gap: 32,
+            flexDirection: 'row',
+         },
+         [`screen and (min-width:${screens.lg})`]: {
+            gap: 48,
+         },
+      },
    }),
    state: {
       visible: style({
          visibility: 'visible',
-         position: 'fixed',
-         top: 0,
-         zIndex: 990,
-         display: 'flex',
-         flexDirection: 'column',
-         height: '100vh',
-         width: 'clamp(200px, 100vw, 1200px)',
-         marginInline: 'auto',
-         alignItems: 'center',
-         justifyContent: 'center',
-         gap: 16,
-         opacity: 1,
-         '@media': {
-            [`screen and (min-width:${screens.sm})`]: {
-               gap: 24,
-            },
-            [`screen and (min-width:${screens.md})`]: {
-               gap: 32,
-               flexDirection: 'row',
-            },
-            [`screen and (min-width:${screens.lg})`]: {
-               gap: 48,
-            },
-         },
       }),
       hidden: style({
          visibility: 'hidden',
@@ -74,12 +74,12 @@ export const navLink = {
       listStyle: 'none',
       animation: `${revealFromBottom} 250ms 400ms ease both`,
       position: 'relative',
-      cursor:'pointer'
+      cursor: 'pointer',
    }),
    a: style({
       fontSize: 16,
       fontWeight: 'normal',
-      textTransform:'capitalize',
+      textTransform: 'capitalize',
       color: vars.color['base-content'],
       '@media': {
          [`screen and (min-width:${screens.md})`]: {
@@ -95,7 +95,7 @@ export const navLink = {
 export const underline = style([
    {
       selectors: {
-         "&":{
+         '&': {
             position: 'absolute',
             bottom: -3,
             left: 0,
@@ -108,7 +108,7 @@ export const underline = style([
             transformOrigin: 'left',
          },
          [`${navLink.li}:hover &`]: {
-            scale:'1 1'
+            scale: '1 1',
          },
       },
    },
