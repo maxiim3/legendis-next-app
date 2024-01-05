@@ -1,4 +1,4 @@
-import {revealFromBottom} from '@/app/shared.css';
+import {flexColCenterCenter, revealFromBottom} from '@/app/shared.css';
 import {screens, vars} from '@/app/theme.css';
 import {keyframes, style} from '@vanilla-extract/css';
 
@@ -60,23 +60,26 @@ export const switchLanguage = style({
    gap: 8,
    filter: 'grayscale(100%)',
    opacity: 0.7,
-   cursor: 'pointer',
    userSelect: 'none',
    transition: 'all 150ms ease',
    ':hover': {
       filter: 'grayscale(0)',
       opacity: 1,
+      cursor: 'pointer',
    },
 });
+
 export const navLink = {
    li: style({
       listStyle: 'none',
       animation: `${revealFromBottom} 250ms 400ms ease both`,
+      position: 'relative',
+      cursor:'pointer'
    }),
    a: style({
       fontSize: 16,
       fontWeight: 'normal',
-      textTransform: 'uppercase',
+      textTransform:'capitalize',
       color: vars.color['base-content'],
       '@media': {
          [`screen and (min-width:${screens.md})`]: {
@@ -88,25 +91,39 @@ export const navLink = {
       },
    }),
 };
-export const logoTitle = {
-   container: style({
+
+export const underline = style([
+   {
+      selectors: {
+         "&":{
+            position: 'absolute',
+            bottom: -3,
+            left: 0,
+            width: '100%',
+            display: 'block',
+            background: 'white',
+            height: 2,
+            scale: '0 1',
+            transition: 'all 250ms ease',
+            transformOrigin: 'left',
+         },
+         [`${navLink.li}:hover &`]: {
+            scale:'1 1'
+         },
+      },
+   },
+]);
+//selectors: {
+//   [`${parent}:focus &`]: {
+//      background: '#fafafa'
+//   }
+//}
+
+export const absoluteContainer = style([
+   flexColCenterCenter,
+   {
       position: 'absolute',
       top: 48,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-   }),
-   logo: style({
-      height: 96,
-      width: 96,
-      fill: vars.color.primary,
-      animation: `${revealFromBottom} 350ms 220ms ease-in both`,
-   }),
-   title: style({
-      fontSize: 16,
-      color: vars.color.primary,
-      opacity: 0.8,
-      animation: `${revealFromBottom} 150ms 175ms ease-in both`,
-   }),
-};
+      animation: `${revealFromBottom} 300ms 320ms ease-in both`,
+   },
+]);

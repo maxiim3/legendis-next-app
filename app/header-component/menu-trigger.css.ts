@@ -33,10 +33,9 @@ export const button = style([
    {
       transition: 'all 200ms ease',
       padding: '4px 8px',
-      zIndex: 999,
+      zIndex: 998,
       color: vars.color['base-content'],
       cursor: 'pointer',
-      border: '1px solid lightgray',
    },
 ]);
 

@@ -1,4 +1,4 @@
-import {videoWrapper} from '@/app/layout.css';
+import { videoWrapper } from '@/app/layout.css';
 import VideoPlayer from '@/page-section/fixed-video/video-player';
 import React from 'react';
 

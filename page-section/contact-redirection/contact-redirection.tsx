@@ -1,6 +1,6 @@
 'use client';
 
-import {SectionTemplate} from '@/page-section/section-template';
+import {SectionInViewObserver} from '@/app/section-in-view-observer';
 import TextBlock from '@/components/atoms/text-block';
 import {MultiLanguageContentFactory} from '@/shared/i18n/MultiLanguageContentFactory';
 import {useAppLanguage} from '@/shared/i18n/useAppLanguage';
@@ -23,7 +23,7 @@ export function ContactRedirection() {
    const {buttonLabel} = useSectionData();
 
    return (
-      <SectionTemplate
+      <SectionInViewObserver
          className={'mb-12 rounded-b-xl pb-24'}
          slug={'contact'}
          id={'contact'}>
@@ -38,6 +38,6 @@ export function ContactRedirection() {
                {buttonLabel}
             </Link>
          </TextBlock>
-      </SectionTemplate>
+      </SectionInViewObserver>
    );
 }

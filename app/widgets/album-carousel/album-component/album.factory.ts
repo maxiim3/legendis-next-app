@@ -1,4 +1,4 @@
-import {OT_AlbumFromSanity} from '@/page-section/hero-section/albums/album.types';
+import {OT_AlbumFromSanity} from '@/app/widgets/album-carousel/album-component/album-types-extrator.sanity';
 
 export const AlbumFactory = (props: OT_AlbumFromSanity) => {
    const {

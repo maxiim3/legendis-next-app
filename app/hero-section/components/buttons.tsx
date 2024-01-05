@@ -1,11 +1,17 @@
+'use client'
+
+import {usePageSectionCtx} from '@/app/page-navigation-ctx/page-navigation-ctx';
 import * as React from 'react';
 
 // export the React Wrapper
 
 export function ButtonLink() {
+   const{pageSection, scrollTo} = usePageSectionCtx()
+
    return (
       <a
-         href={'#presentation'}
+         onClick={()=> scrollTo('albums')}
+         href={'#albums'}
          className={'animate-bounce rounded-lg bg-base-100/10 transition hover:bg-base-100/60'}>
          <svg
             xmlns='http://www.w3.org/2000/svg'

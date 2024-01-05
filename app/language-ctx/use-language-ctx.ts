@@ -1,3 +1,5 @@
+'use client'
+
 import {LanguageCtx, LanguageCtxDispatcher} from '@/app/language-ctx/language-ctx-provider';
 import type {LanguageOptions} from '@/app/language-ctx/language-ctx.types';
 import {setNewURLSearchParams, updateRouter, useUrlProps} from '@/app/language-ctx/utils';

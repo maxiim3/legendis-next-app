@@ -3,6 +3,8 @@ import {style} from '@vanilla-extract/css';
 
 export const footer = style({
    position: 'relative',
+   width:'100%',
+   bottom: 0,
    background: `linear-gradient(to bottom, ${vars.color['base-100']} 0%, ${vars.color['base-100']}  40%, ${vars.color['base-300']} 100%)`,
 });
 

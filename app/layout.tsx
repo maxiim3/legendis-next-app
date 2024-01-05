@@ -1,7 +1,8 @@
-import Footer from '@/app/footer-component/footer';
-import Header from '@/app/header-component/header';
 import {LanguageCtxProvider} from '@/app/language-ctx/language-ctx-provider';
-import {BackgroundVideo} from '@/page-section/fixed-video/video-component';
+import {loader, loaderLogo} from '@/app/loader.css';
+import {PageSectionCtxProvider} from '@/app/page-navigation-ctx/page-navigation-ctx';
+import Legendis from '@/components/atoms/Legendis';
+import {LegendisLogo} from '@/components/organisms/legendis-logo';
 import {italianno, roboto, tangerine} from '@/shared/fonts';
 import type {Metadata} from 'next';
 import React from 'react';
@@ -21,11 +22,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
          lang='en'>
          <body
             className={`${body} ${roboto.className} ${italianno.className} ${tangerine.className}`}>
+         <div className={loader}>
+            <Legendis className={loaderLogo}/>
+         </div>
             <LanguageCtxProvider>
-               <Header />
-               <BackgroundVideo />
-               {children}
-               <Footer />
+               <PageSectionCtxProvider>
+                  {children}
+               </PageSectionCtxProvider>
             </LanguageCtxProvider>
          </body>
       </html>
