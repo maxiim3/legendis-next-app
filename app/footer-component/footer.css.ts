@@ -5,7 +5,7 @@ export const footer = style({
    position: 'relative',
    width:'100%',
    bottom: 0,
-   background: `linear-gradient(to bottom, ${vars.color['base-100']} 0%, ${vars.color['base-100']}  40%, ${vars.color['base-300']} 100%)`,
+   background: `linear-gradient(to bottom, rgba(0,0,0,0) 0%, ${vars.color['base-100']}  30%, ${vars.color['base-100']} 100%)`,
 });
 
 export const title = style({
